@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="300" viewBox="0 0 1280 300" role="img" aria-labelledby="title desc">
+  <title id="title">From forecast to governed action</title>
+  <desc id="desc">Three connected repository capabilities: Prophet forecasting, Databricks Genie, and optional Action Intelligence.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b1220"/><stop offset="1" stop-color="#16111a"/></linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#f97316"/></marker>
+  </defs>
+  <rect width="1280" height="300" rx="24" fill="url(#bg)"/>
+  <text x="64" y="56" fill="#ffffff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="25" font-weight="700">Decision intelligence, managed as code</text>
+  <text x="64" y="84" fill="#94a3b8" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15">Planning scenarios → governed questions → reviewable action plans</text>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <g transform="translate(64 112)">
+      <rect width="330" height="132" rx="18" fill="#111827" stroke="#334155"/>
+      <rect width="7" height="132" rx="3.5" fill="#38bdf8"/>
+      <text x="34" y="39" fill="#7dd3fc" font-size="13" font-weight="700" letter-spacing="1.2">FORECAST</text>
+      <text x="34" y="70" fill="#fff" font-size="22" font-weight="700">Prophet outlook</text>
+      <text x="34" y="99" fill="#cbd5e1" font-size="15">Actuals + six future periods</text>
+      <text x="34" y="121" fill="#94a3b8" font-size="13">80% uncertainty interval</text>
+    </g>
+    <g transform="translate(475 112)">
+      <rect width="330" height="132" rx="18" fill="#111827" stroke="#334155"/>
+      <rect width="7" height="132" rx="3.5" fill="#ff3621"/>
+      <text x="34" y="39" fill="#ff8b7d" font-size="13" font-weight="700" letter-spacing="1.2">ASK</text>
+      <text x="34" y="70" fill="#fff" font-size="22" font-weight="700">Databricks Genie</text>
+      <text x="34" y="99" fill="#cbd5e1" font-size="15">Governed semantic sources</text>
+      <text x="34" y="121" fill="#94a3b8" font-size="13">Executable benchmark suite</text>
+    </g>
+    <g transform="translate(886 112)">
+      <rect width="330" height="132" rx="18" fill="#111827" stroke="#334155"/>
+      <rect width="7" height="132" rx="3.5" fill="#f97316"/>
+      <text x="34" y="39" fill="#fdba74" font-size="13" font-weight="700" letter-spacing="1.2">ACT · OPTIONAL</text>
+      <text x="34" y="70" fill="#fff" font-size="22" font-weight="700">Action Intelligence</text>
+      <text x="34" y="99" fill="#cbd5e1" font-size="15">Research + retrieved playbook</text>
+      <text x="34" y="121" fill="#94a3b8" font-size="13">Persisted, reviewable history</text>
+    </g>
+  </g>
+  <path d="M405 178H459" stroke="#f97316" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M816 178H870" stroke="#f97316" stroke-width="3" marker-end="url(#arrow)"/>
+</svg>
