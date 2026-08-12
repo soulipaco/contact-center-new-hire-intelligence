@@ -1,0 +1,45 @@
+{
+  "duration_seconds": 174.236,
+  "scenes": [
+    {
+      "scene": 1,
+      "title": "Contact Center New-Hire Intelligence",
+      "duration_seconds": 15.062
+    },
+    {
+      "scene": 2,
+      "title": "Bring four governed inputs",
+      "duration_seconds": 24.276
+    },
+    {
+      "scene": 3,
+      "title": "Start with executive readiness",
+      "duration_seconds": 21.941
+    },
+    {
+      "scene": 4,
+      "title": "Learning needs volume context",
+      "duration_seconds": 21.436
+    },
+    {
+      "scene": 5,
+      "title": "Explore tenure, volume, and KPI relationships",
+      "duration_seconds": 21.121
+    },
+    {
+      "scene": 6,
+      "title": "Separate variation from signal",
+      "duration_seconds": 19.841
+    },
+    {
+      "scene": 7,
+      "title": "Move from forecast to governed action",
+      "duration_seconds": 22.59
+    },
+    {
+      "scene": 8,
+      "title": "The repository is the product",
+      "duration_seconds": 27.87
+    }
+  ]
+}

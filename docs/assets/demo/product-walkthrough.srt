@@ -1,0 +1,98 @@
+1
+00:00:00,250 --> 00:00:14,012
+Contact Center New-Hire Intelligence is an open-source Databricks accelerator for one difficult operating
+question: when does a new-hire cohort become production-ready, and how confident should we be in that
+answer?
+
+2
+00:00:15,312 --> 00:00:26,760
+A customer supplies four governed Unity Catalog tables: daily KPI observations, agent assignments,
+effective KPI targets, and training classes.
+
+3
+00:00:26,820 --> 00:00:35,305
+A validated configuration generates the canonical Bronze adapter and a reviewable Databricks Asset
+Bundle.
+
+4
+00:00:35,365 --> 00:00:38,407
+Downstream analytics remain unchanged.
+
+5
+00:00:39,587 --> 00:00:42,703
+The executive page leads with readiness.
+
+6
+00:00:42,763 --> 00:00:50,007
+It combines target attainment, modeled days to target, process yield, and cohort comparisons.
+
+7
+00:00:50,067 --> 00:01:00,348
+Filters are associative, so leaders can move from the portfolio view into a specific fictional program,
+cohort, KPI, or time window.
+
+8
+00:01:01,528 --> 00:01:05,964
+A learning curve without production exposure can be misleading.
+
+9
+00:01:06,024 --> 00:01:12,008
+This page places observed and fitted performance beside weekly and cumulative volume.
+
+10
+00:01:12,068 --> 00:01:21,784
+Four curve families compete for every cohort and KPI, while fit quality prevents weak models from
+becoming confident target-date promises.
+
+11
+00:01:22,964 --> 00:01:27,694
+Driver views compare KPI performance with tenure and handled volume.
+
+12
+00:01:27,754 --> 00:01:36,586
+The fitted series and correlations support investigation, but the product deliberately labels them as
+descriptive associations.
+
+13
+00:01:36,646 --> 00:01:42,905
+That distinction keeps an attractive visual from turning into an unsupported causal claim.
+
+14
+00:01:44,085 --> 00:01:55,531
+Process-control views add direction-aware one, two, and three sigma limits, first-pass yield, DPMO, and
+complementary z-score and IQR outlier methods.
+
+15
+00:01:55,591 --> 00:02:02,687
+Lower-is-better metrics such as handle time are never ranked as if larger values were better.
+
+16
+00:02:03,927 --> 00:02:09,971
+Prophet publishes six future planning periods with an eighty percent uncertainty interval.
+
+17
+00:02:10,031 --> 00:02:15,874
+Databricks Genie uses five governed semantic sources and an executable benchmark suite.
+
+18
+00:02:15,934 --> 00:02:25,337
+Optional Action Intelligence combines Genie research with retrieved, Git-reviewed playbook content and
+persists a reviewable action history.
+
+19
+00:02:26,517 --> 00:02:30,774
+The workspace is the runtime and presentation surface.
+
+20
+00:02:30,834 --> 00:02:33,200
+The repository is the product.
+
+21
+00:02:33,260 --> 00:02:49,344
+Lakehouse code, model governance, semantic metadata, dashboard definitions, Genie configuration,
+workflows, evaluation, privacy gates, and operating playbooks are version controlled and deployed
+together.
+
+22
+00:02:49,404 --> 00:02:53,267
+Clone it, map your data, validate it, and deploy.

@@ -76,17 +76,15 @@ Use direction-aware control limits, first-pass yield, DPMO, and z-score/IQR diag
 | **Databricks Genie** | Five governed semantic sources, reusable measures and filters, example SQL, and 12 executable benchmarks. |
 | **Action Intelligence** | An optional, reviewable workflow that combines Genie Deep Research with retrieved operating-playbook context and persists action-plan history to Delta. |
 
-All dashboard screenshots use independently generated fictional customer data. They are presentation evidence, not fabricated mockups. See the [visual audit](docs/dashboard_visual_audit.md) for scope and limitations. A short recorded walkthrough is planned; until then, use the [maintainer walkthrough script](docs/portfolio_walkthrough.md).
+All dashboard screenshots use independently generated fictional customer data. They are presentation evidence, not fabricated mockups. See the [visual audit](docs/dashboard_visual_audit.md) for scope and limitations.
 
 ### Recorded walkthrough
 
-<!-- Replace this image with the final GIF/video thumbnail and link after recording. -->
-
-<a href="docs/portfolio_walkthrough.md">
-  <img src="docs/assets/branding/walkthrough-placeholder.svg" alt="Walkthrough coming soon: deploy, explore, ask, and act" width="100%">
+<a href="docs/assets/demo/product-walkthrough.mp4">
+  <img src="docs/assets/demo/product-walkthrough-preview.gif" alt="Play the Contact Center New-Hire Intelligence product walkthrough" width="100%">
 </a>
 
-The recording slot is intentionally repository-native and replaceable. The linked script already covers the 30-second framing, dashboard path, Genie questions, and evidence handoff.
+[Watch the 2:54 walkthrough](docs/assets/demo/product-walkthrough.mp4) · [Read the captions](docs/assets/demo/product-walkthrough.srt) · [Use the live-demo script](docs/portfolio_walkthrough.md)
 
 ## Architecture
 
