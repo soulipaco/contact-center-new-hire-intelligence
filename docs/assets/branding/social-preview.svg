@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">Contact Center New-Hire Intelligence social preview</title>
+  <desc id="desc">Open-source Databricks accelerator for learning curves, volume-aware analytics, AI/BI, and Genie.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07101e"/><stop offset=".65" stop-color="#111827"/><stop offset="1" stop-color="#2b1115"/></linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#ff3621"/><stop offset="1" stop-color="#f97316"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="34"/></filter>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <circle cx="1120" cy="110" r="190" fill="#ff3621" opacity=".1" filter="url(#glow)"/>
+  <g opacity=".14" stroke="#e2e8f0"><path d="M760 80H1215M760 160H1215M760 240H1215M760 320H1215M760 400H1215M760 480H1215M760 560H1215"/><path d="M800 42V590M900 42V590M1000 42V590M1100 42V590M1200 42V590"/></g>
+  <g transform="translate(770 160)" fill="none" stroke-linecap="round">
+    <path d="M0 330C70 320 98 267 155 252S247 220 296 161S385 109 452 55" stroke="#ff6250" stroke-width="8"/>
+    <path d="M0 365C69 349 106 342 160 310S257 294 318 261S399 242 452 211" stroke="#f97316" stroke-width="7" opacity=".9"/>
+    <path d="M0 405C72 399 122 385 177 379S273 351 335 347S409 327 452 315" stroke="#38bdf8" stroke-width="6" opacity=".75"/>
+  </g>
+  <rect x="72" y="76" width="422" height="34" rx="17" fill="#ff3621" opacity=".15" stroke="#ff705f"/>
+  <text x="94" y="99" fill="#ffb4aa" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="1.2">OPEN-SOURCE DATABRICKS ACCELERATOR</text>
+  <text x="72" y="202" fill="#fff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="61" font-weight="750">Contact Center</text>
+  <text x="72" y="276" fill="#fff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="61" font-weight="750">New-Hire Intelligence</text>
+  <rect x="72" y="311" width="568" height="7" rx="3.5" fill="url(#line)"/>
+  <text x="72" y="373" fill="#cbd5e1" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="24">From four governed tables to learning curves,</text>
+  <text x="72" y="407" fill="#cbd5e1" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="24">volume-aware diagnostics, AI/BI, Genie, and action.</text>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif" font-size="17" font-weight="650" fill="#f8fafc">
+    <text x="72" y="514">LAKEHOUSE</text><circle cx="205" cy="508" r="4" fill="#f97316"/>
+    <text x="227" y="514">MLFLOW</text><circle cx="332" cy="508" r="4" fill="#f97316"/>
+    <text x="354" y="514">AI / BI</text><circle cx="443" cy="508" r="4" fill="#f97316"/>
+    <text x="465" y="514">GENIE</text>
+  </g>
+  <text x="72" y="572" fill="#64748b" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="17">github.com/soulipaco/contact-center-new-hire-intelligence</text>
+</svg>

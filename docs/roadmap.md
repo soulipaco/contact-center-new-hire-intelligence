@@ -1,26 +1,29 @@
 # Roadmap
 
-## 0.1 — Open-source accelerator foundation
+The roadmap prioritizes adoption and portability while preserving the canonical data and metric contracts validated in v1.0.0.
 
-- Canonical source contracts and Unity Catalog adapter generation.
-- Demo/customer modes and namespace-rendered deployable builds.
-- Configuration, security, contribution, and troubleshooting documentation.
-- Full dashboard, Genie, ML, forecasting, and optional action-intelligence example.
+## Shipped in v1.0.0
 
-## 0.2 — Broader source compatibility
+- Canonical Unity Catalog source contracts and generated customer adapters
+- Demo/customer modes and namespace-rendered deployable builds
+- Governed lakehouse, learning curves, forecasts, serving views, AI/BI, and Genie
+- Optional Action Intelligence with generated playbook artifacts
+- Privacy gates, artifact-contract tests, clean-room rehearsal, and validation evidence
+- GitHub release, contribution, security, troubleshooting, and operating documentation
 
-- String-native agent and cohort surrogate keys.
-- CSV and cloud-object-storage adapters.
-- Remote table-schema inspection from the local preflight command.
-- Independently disable learning-curve ML or forecasting with graceful serving fallbacks.
+## Next — adoption and source compatibility
 
-## 0.3 — Release automation
+- Record and publish a repeatable end-to-end walkthrough
+- Add string-native agent and cohort surrogate-key support
+- Add CSV and cloud-object-storage adapter examples
+- Inspect remote table schemas during local preflight
+- Publish a reusable integration-test workspace fixture
 
-- Versioned GitHub releases and generated release notes.
-- Upgrade/migration checks for configuration and semantic contracts.
-- Reusable integration-test workspace fixture.
-- Published screenshots and a repeatable end-to-end demo recording.
+## Later — lifecycle and extensibility
 
-The roadmap is directional. Contributions should preserve backward-compatible
-canonical contracts or include an explicit migration path.
+- Add configuration and semantic-contract upgrade checks
+- Allow learning-curve ML and forecasting to be disabled independently with graceful serving fallbacks
+- Expand governed KPI packs without weakening metric direction or weighting contracts
+- Automate release-note generation and migration guidance
 
+This plan is directional rather than a delivery promise. Contributions should preserve backward-compatible canonical contracts or include an explicit migration path.

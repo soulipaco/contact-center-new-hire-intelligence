@@ -1,17 +1,44 @@
 name: Feature request
-description: Propose an improvement to the accelerator.
+description: Propose an adoption, analytics, or platform improvement.
 title: "[Feature]: "
-labels: [enhancement]
+labels:
+  - enhancement
 body:
   - type: textarea
     id: problem
-    attributes: {label: Problem, description: What user or operating problem should this solve?}
-    validations: {required: true}
+    attributes:
+      label: Problem
+      description: What user or operating problem should this solve?
+    validations:
+      required: true
   - type: textarea
     id: proposal
-    attributes: {label: Proposed behavior}
-    validations: {required: true}
+    attributes:
+      label: Proposed behavior
+      description: Describe the desired outcome rather than only an implementation.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Primary area
+      options:
+        - Source compatibility
+        - KPI or statistical analytics
+        - Learning curves or forecasting
+        - Dashboard or Genie
+        - Action Intelligence
+        - Deployment or developer experience
+        - Documentation or examples
+    validations:
+      required: true
   - type: textarea
     id: contract
-    attributes: {label: Data and metric impact, description: Describe grain, inputs, outputs, and compatibility.}
-
+    attributes:
+      label: Data and metric impact
+      description: Describe grain, inputs, outputs, compatibility, and migration implications. Write "None" when not applicable.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance evidence
+      description: What would demonstrate that this feature works safely and reproducibly?

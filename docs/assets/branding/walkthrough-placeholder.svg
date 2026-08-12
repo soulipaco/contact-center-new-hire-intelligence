@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="260" viewBox="0 0 1280 260" role="img" aria-labelledby="title desc">
+  <title id="title">Product walkthrough placeholder</title>
+  <desc id="desc">A replaceable recording placeholder showing the four-stage walkthrough: deploy, explore, ask, and act.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b1220"/><stop offset="1" stop-color="#171119"/></linearGradient></defs>
+  <rect width="1280" height="260" rx="22" fill="url(#bg)"/>
+  <circle cx="110" cy="130" r="55" fill="#ff3621" opacity=".16" stroke="#ff6b59" stroke-width="2"/>
+  <path d="M96 99L142 130L96 161Z" fill="#fff"/>
+  <text x="194" y="82" fill="#f97316" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="1.4">3–5 MINUTE PRODUCT WALKTHROUGH</text>
+  <text x="194" y="122" fill="#fff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="30" font-weight="700">Recording slot — ready for your final demo</text>
+  <text x="194" y="154" fill="#94a3b8" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16">Replace this repository-native placeholder with the finished GIF or linked video thumbnail.</text>
+  <g transform="translate(194 184)" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="650">
+    <rect width="132" height="36" rx="18" fill="#1e293b"/><text x="38" y="23" fill="#e2e8f0">01 DEPLOY</text>
+    <path d="M146 18H178" stroke="#f97316" stroke-width="2"/>
+    <rect x="192" width="132" height="36" rx="18" fill="#1e293b"/><text x="222" y="23" fill="#e2e8f0">02 EXPLORE</text>
+    <path d="M338 18H370" stroke="#f97316" stroke-width="2"/>
+    <rect x="384" width="112" height="36" rx="18" fill="#1e293b"/><text x="419" y="23" fill="#e2e8f0">03 ASK</text>
+    <path d="M510 18H542" stroke="#f97316" stroke-width="2"/>
+    <rect x="556" width="112" height="36" rx="18" fill="#1e293b"/><text x="589" y="23" fill="#e2e8f0">04 ACT</text>
+  </g>
+</svg>
