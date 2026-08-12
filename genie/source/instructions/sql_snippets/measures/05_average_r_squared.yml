@@ -1,0 +1,9 @@
+id: d101f5d3a1c84c1da55ad8ef74c10105
+alias: average_r_squared
+display_name: Average R-Squared
+sql: AVG(r_squared)
+synonyms: [model fit, fit quality, curve confidence]
+instruction: |
+  WHEN_TO_USE: Use to summarize learning-curve fit quality.
+  SCOPE_TABLES: workspace.contact_center_gold.mv_learning_curve_best.
+  RISK_IF_MISUSED: Values below 0.30 are inconclusive and should not support strong conclusions.

@@ -1,0 +1,23 @@
+name: agents
+grain: one row per agent assignment validity start
+required_columns:
+  agent_id: integer
+  service_program: string
+  first_day_in_production: date
+  cohort_id: integer
+  cohort_name: string
+  class_id: string
+  snapshot_effective_from: date
+optional_columns:
+  agent_label: pseudonymous_string
+  site: string
+  market: string
+  language: string
+  channel: string
+  line_of_business: string
+  wave: string
+rules:
+  - agent_id must be stable across observations and assignment snapshots.
+  - validity intervals derived from snapshot_effective_from must not overlap.
+  - agent_label must be pseudonymous and must not contain a real employee name.
+  - agent_id and cohort_id must be integer-compatible in the current release.

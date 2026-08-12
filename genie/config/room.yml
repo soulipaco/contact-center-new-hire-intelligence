@@ -1,0 +1,34 @@
+room_name: contact_center_new_hire_ramp
+title: Contact Center New-Hire Ramp Intelligence
+description: |-
+  Privacy-safe workforce analytics for contact-center new-hire programs.
+  Explore KPI ramp progression, target attainment, learning-curve quality,
+  cohort comparisons, tenured benchmarks, and six-month forecasts.
+version: 2
+purpose: Reusable analytics accelerator for Databricks Genie and AI/BI dashboards
+source_of_truth: repo
+parent_path: "{{WORKSPACE_PARENT_PATH}}"
+
+sample_questions:
+  - id: a01c9e9bd7704a46a54693f4a9d10101
+    question: Which cohort reaches QA Score target fastest?
+  - id: a01c9e9bd7704a46a54693f4a9d10102
+    question: Show AHT by tenure week for new hires.
+  - id: a01c9e9bd7704a46a54693f4a9d10103
+    question: What percentage of new hires meet target by day 60?
+  - id: a01c9e9bd7704a46a54693f4a9d10104
+    question: Which learning curves are inconclusive?
+  - id: a01c9e9bd7704a46a54693f4a9d10105
+    question: What is the six-month QA Score forecast by service program?
+
+data_sources: source/data_sources/tables.yml
+column_metadata: source/metadata/columns/
+instructions:
+  general: source/instructions/general.md
+  example_sql: source/instructions/example_sql/
+  sql_snippets:
+    filters: source/instructions/sql_snippets/filters/
+    measures: source/instructions/sql_snippets/measures/
+    dimensions: source/instructions/sql_snippets/dimensions/
+benchmarks: source/benchmarks/
+bootstrap_snapshot: snapshots/exported_space.json

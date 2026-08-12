@@ -1,0 +1,9 @@
+id: e202a6e4b2d94d2eb66be9f085d20201
+display_name: New Hires Only
+sql: is_new_hire = true
+synonyms: [ramp agents, trainees, first 90 days]
+instruction: |
+  WHEN_TO_USE: Apply when the user asks about new hires or the ramp period.
+  SCOPE_TABLES: workspace.contact_center_gold.mv_new_hire_kpi_daily.
+  TIMEFRAME_HINT: Tenure days 1 through 90.
+  RISK_IF_MISUSED: Do not apply to tenured benchmark questions.

@@ -1,0 +1,9 @@
+id: b401c806d4fb4f40a88d0b12a7f40103
+question: Which cohort reaches QA Score target fastest?
+answer_format: SQL
+sql: |-
+  SELECT service_program, cohort_name, days_to_target, r_squared
+  FROM workspace.contact_center_gold.mv_learning_curve_best
+  WHERE kpi ILIKE '%QA Score%'
+  ORDER BY days_to_target ASC NULLS LAST, r_squared DESC
+expected_behavior: Filter to best models and rank the smallest non-null days_to_target first.

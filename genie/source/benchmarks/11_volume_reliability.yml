@@ -1,0 +1,10 @@
+id: b401c806d4fb4f40a88d0b12a7f40111
+question: How does QA Score differ across volume reliability quartiles?
+answer_format: SQL
+sql: |-
+  SELECT volume_bin, SUM(nominator) / NULLIF(SUM(denominator), 0) weighted_qa_score,
+         COUNT(DISTINCT agent_id) distinct_agents
+  FROM workspace.contact_center_gold.mv_new_hire_kpi_daily
+  WHERE kpi = 'QA Score'
+  GROUP BY volume_bin ORDER BY volume_bin
+expected_behavior: Return quartiles one through four and use a weighted KPI score.

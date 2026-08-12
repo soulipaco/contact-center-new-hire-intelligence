@@ -1,0 +1,16 @@
+id: f301b7f5c3ea4e3fb77cfa0196e30104
+question: Which learning curves are inconclusive?
+sql: |-
+  SELECT
+    service_program,
+    cohort_name,
+    kpi,
+    model_type,
+    ROUND(r_squared, 3) AS r_squared,
+    interpretation
+  FROM workspace.contact_center_gold.mv_learning_curve_best
+  WHERE r_squared < 0.30
+  ORDER BY r_squared ASC, service_program, cohort_name, kpi
+usage_guidance: |
+  Use for low-confidence, weak-fit, or inconclusive learning-curve questions.
+  MANDATORY OUTPUT CONTRACT: service_program, cohort_name, kpi, model_type, r_squared, interpretation.

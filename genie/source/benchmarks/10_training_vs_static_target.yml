@@ -1,0 +1,10 @@
+id: b401c806d4fb4f40a88d0b12a7f40110
+question: Compare training and static targets for AHT by service program.
+answer_format: SQL
+sql: |-
+  SELECT service_program, MAX(static_target) static_target, MAX(training_target) training_target
+  FROM workspace.contact_center_gold.mv_new_hire_kpi_daily
+  WHERE kpi = 'AHT'
+  GROUP BY service_program
+  ORDER BY service_program
+expected_behavior: Return both target types and avoid reversing lower-is-better semantics.

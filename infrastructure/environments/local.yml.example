@@ -1,0 +1,5 @@
+environment: local
+workspace_url: "https://<databricks-workspace-url>"
+warehouse_id: "<sql-warehouse-id>"
+space_id: null
+parent_path: "/Users/<workspace-user>"

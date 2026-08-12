@@ -1,0 +1,9 @@
+id: e202a6e4b2d94d2eb66be9f085d20202
+display_name: Best Learning-Curve Model
+sql: is_best_model = true
+synonyms: [recommended curve, selected model, winning model]
+instruction: |
+  WHEN_TO_USE: Apply to normal learning-curve and days-to-target questions.
+  SCOPE_TABLES: workspace.contact_center_gold.mv_learning_curve_best.
+  TIMEFRAME_HINT: any.
+  RISK_IF_MISUSED: Without this filter each cohort and KPI appears four times.

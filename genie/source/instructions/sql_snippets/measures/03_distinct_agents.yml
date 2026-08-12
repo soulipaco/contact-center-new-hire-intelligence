@@ -1,0 +1,9 @@
+id: d101f5d3a1c84c1da55ad8ef74c10103
+alias: distinct_agents
+display_name: Distinct Agents
+sql: COUNT(DISTINCT agent_id)
+synonyms: [agent count, headcount, people]
+instruction: |
+  WHEN_TO_USE: Use for unique agent counts.
+  SCOPE_TABLES: workspace.contact_center_gold.mv_new_hire_kpi_daily.
+  RISK_IF_MISUSED: COUNT(*) counts agent-KPI-day observations, not people.

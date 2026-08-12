@@ -1,0 +1,18 @@
+name: targets
+grain: one row per service_program, cohort_id, kpi, and target version
+required_columns:
+  service_program: string
+  cohort_id: integer
+  kpi: string
+  target: number
+  direction: higher_is_better_or_lower_is_better
+  format: percentage_or_number
+  lower_limit: number
+  upper_limit: number
+  effective_from: date
+  effective_to: date
+  target_version: integer
+rules:
+  - effective_from must be on or before effective_to.
+  - effective ranges must not overlap for the same service_program, cohort_id, and kpi.
+  - percentage values use the zero-to-one scale.

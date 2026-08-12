@@ -1,0 +1,31 @@
+project:
+  name: contact-center-new-hire-intelligence
+  mode: demo
+  catalog: workspace
+  schemas:
+    bronze: contact_center_bronze
+    silver: contact_center_silver
+    gold: contact_center_gold
+    models: contact_center_models
+
+analytics:
+  new_hire_days: 90
+  tenured_baseline_min_days: 91
+  learning_curve_max_days: 90
+  forecast_periods: 6
+  forecast_interval_width: 0.80
+  outliers:
+    z_score_threshold: 3.0
+    iqr_multiplier: 1.5
+
+features:
+  learning_curve_ml: true
+  forecasting: true
+  genie: true
+  dashboard: true
+  action_intelligence: false
+  vector_search: false
+
+source:
+  type: synthetic
+  synthetic_seed: 20260812

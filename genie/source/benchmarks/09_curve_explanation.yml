@@ -1,0 +1,9 @@
+id: b401c806d4fb4f40a88d0b12a7f40109
+question: Explain the selected QA Pass Rate learning curve for each cohort.
+answer_format: SQL
+sql: |-
+  SELECT service_program, cohort_name, model_type, r_squared, days_to_target, interpretation
+  FROM workspace.contact_center_gold.mv_learning_curve_best
+  WHERE kpi ILIKE '%QA Pass Rate%'
+  ORDER BY service_program, cohort_name
+expected_behavior: Use only selected governed models and include interpretation plus fit quality.

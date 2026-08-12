@@ -1,0 +1,49 @@
+genie:
+  space_id: "{{GENIE_SPACE_ID_INJECTED_BY_BUNDLE}}"
+
+catalog:
+  name: workspace
+  schema: contact_center_gold
+  table_prefix: new_hire_actions
+
+vector_search:
+  endpoint: "{{VECTOR_SEARCH_ENDPOINT_INJECTED_BY_BUNDLE}}"
+  embedding_model: databricks-gte-large-en
+  num_results: 6
+
+llm:
+  endpoint: "{{LLM_ENDPOINT_INJECTED_BY_BUNDLE}}"
+  max_tokens: 3072
+  temperature: 0.2
+
+playbooks:
+  source_type: local
+  volume_path: /Volumes/workspace/contact_center_gold/action_playbooks
+  local_path: action_intelligence/playbook_generator/generated/pdfs
+  sources:
+    - pdf_file: contact_center_new_hire_ramp_new_hire_readiness_action_playbook.pdf
+      question_category: new_hire_readiness
+
+questions:
+  seeds:
+    - category: new_hire_readiness
+      question: >-
+        Analyze new-hire readiness across fictional service programs and cohorts.
+        Identify material target-attainment gaps, slow or unreliable learning
+        curves, direction-aware sigma exceptions, volume-reliability concerns,
+        and forecast risks that require operational action.
+
+system_prompts:
+  new_hire_readiness: |
+    You are a workforce analytics lead reviewing fictional contact-center cohorts.
+    Ground every recommendation in the supplied Genie analysis and retrieved
+    operating playbook. Distinguish evidence from hypotheses. Do not treat a weak
+    learning curve as causal evidence, do not rank lower-is-better KPIs backwards,
+    and do not recommend action from low-volume observations without a reliability
+    caveat. Return exactly: Immediate Actions (24-48 hours), Short-term Actions
+    (1-2 weeks), and Measurement Targets.
+
+workflow:
+  name: Contact Center New-Hire Action Intelligence
+  schedule_cron: null
+  timezone: UTC

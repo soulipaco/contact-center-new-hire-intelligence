@@ -1,0 +1,73 @@
+table: "workspace.contact_center_gold.mv_new_hire_kpi_daily"
+columns:
+  - column_name: performance_date
+    enable_format_assistance: true
+  - column_name: agent_id
+    enable_entity_matching: true
+  - column_name: agent_label
+    enable_entity_matching: true
+  - column_name: service_program
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: cohort_id
+    enable_entity_matching: true
+  - column_name: cohort_name
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: language
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: channel
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: site
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: kpi
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: normal
+    exclude: false
+  - column_name: kpi_format
+    enable_entity_matching: true
+  - column_name: first_day_in_production
+    enable_format_assistance: true
+  - column_name: tenure_day
+    exclude: false
+  - column_name: tenure_week
+    exclude: false
+  - column_name: nominator
+    exclude: false
+  - column_name: denominator
+    exclude: false
+  - column_name: agent_score
+    enable_format_assistance: true
+  - column_name: volume
+    exclude: false
+  - column_name: static_target
+    enable_format_assistance: true
+  - column_name: training_target
+    enable_format_assistance: true
+  - column_name: at_static_target
+    enable_entity_matching: true
+  - column_name: at_training_target
+    enable_entity_matching: true
+  - column_name: is_new_hire
+    enable_entity_matching: true
+  - column_name: cumulative_volume
+    exclude: false
+  - column_name: volume_bin
+    exclude: false
+  - column_name: market
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: line_of_business
+    enable_entity_matching: true
+  - column_name: target_1_sigma
+    enable_format_assistance: true
+  - column_name: target_2_sigma
+    enable_format_assistance: true
+  - column_name: target_3_sigma
+    enable_format_assistance: true
+  - column_name: at_1_sigma
+    enable_entity_matching: true

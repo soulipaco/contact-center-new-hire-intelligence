@@ -1,0 +1,65 @@
+[
+  {
+    "chunk_id": 1,
+    "title": "Playbook Overview",
+    "text": "[Section: Playbook Overview]\n\nRoom title: Contact Center New-Hire Ramp Intelligence\nGenerated from: contact-center-new-hire-intelligence\nA Git-reviewed operating layer that converts governed cohort diagnostics into evidence-aware actions for fictional contact-center programs.",
+    "source": "Contact Center New-Hire Ramp Intelligence_action_playbook.md",
+    "question_category": "cross_source_playbook"
+  },
+  {
+    "chunk_id": 2,
+    "title": "KPI Reference and How to Interpret Shifts",
+    "text": "[Section: KPI Reference and How to Interpret Shifts]\n\nUse this playbook after the governed metrics identify a material readiness gap. It defines what to verify, how to triage, and which measurable response is appropriate without overstating correlation as causation.\nKPIs covered:\n- static_target_attainment_rate: Direction-aware share of new-hire observations meeting the production target.\n- days_to_target: Modeled tenure day at which the selected curve reaches the static target.\n- best_model_r_squared: Fit-quality context for deciding whether a learning-curve conclusion is reliable.\n- sigma_boundary_attainment: Cohort performance relative to direction-aware tenured one, two, and three-sigma boundaries.\n- forecast_interval: Six-month Prophet outlook with an 80 percent uncertainty interval.\nGeneral interpretation rules:\n- Weight KPI scores with raw numerators and denominators; never average agent percentages.\n- Treat AHT, ACW, and Hold Time as lower-is-better; all other published KPIs are higher-is-better.\n- Treat R-squared below 0.30 as inconclusive and avoid target-date commitments.\n- Pair performance conclusions with volume quartile and distinct-agent context.\n- Use forecasts for planning scenarios, not causal claims or guaranteed outcomes.\n- Grain context: date column: `performance_date`\nMetric view: workspace.contact_center_gold.mv_cohort_scorecard\nUnderlying source: workspace.contact_center_gold.mv_cohort_scorecard\nPrimary filters: service_program, cohort_id, cohort_name, kpi\n- Preserve weighted KPI math\n- Respect KPI direction\n- Gate weak learning curves\n- Carry reliability context\n- Treat forecasts as scenarios",
+    "source": "Contact Center New-Hire Ramp Intelligence_action_playbook.md",
+    "question_category": "new_hire_readiness"
+  },
+  {
+    "chunk_id": 3,
+    "title": "Scenario A - Material target-attainment gap after day 60",
+    "text": "[Section: Scenario A - Material target-attainment gap after day 60]\n\nSymptoms:\n- Static target attainment remains below the program median between tenure days 55 and 60.\n- The gap appears across multiple volume quartiles rather than only the lowest-volume observations.\nLikely causes:\n- Training content or nesting support may not match the production KPI mix.\n- One channel, language, or site may be driving a broader cohort average.\nAction plan recommendations:\n1. Immediate actions (24-48 hours)\n- Validate denominator coverage and direction-aware target logic.\n- Segment the cohort by site, channel, language, and volume quartile.\n- Compare the same KPI with the prior fictional cohort and tenured benchmark.\n2. Short-term actions (1-2 weeks)\n- Assign targeted coaching to the confirmed driver segment.\n- Review training examples for the affected KPI and channel.\n- Track daily recovery against both training and static targets.\nMeasurement targets:\n- Improve static target attainment without degrading paired quality or customer KPIs.\n- Reduce the cohort gap to the one-sigma tenured boundary.",
+    "source": "Contact Center New-Hire Ramp Intelligence_action_playbook.md",
+    "question_category": "new_hire_readiness"
+  },
+  {
+    "chunk_id": 4,
+    "title": "Scenario B - Slow or inconclusive learning curve",
+    "text": "[Section: Scenario B - Slow or inconclusive learning curve]\n\nSymptoms:\n- Days to target is late or null.\n- The selected model has R-squared below 0.30 or materially disagrees with other candidates.\nLikely causes:\n- The cohort may have insufficient history, high variance, or a structural process change.\n- A single curve family may not represent the observed ramp pattern.\nAction plan recommendations:\n1. Immediate actions (24-48 hours)\n- Review all four candidate fits and observation coverage.\n- Check whether low-volume days or outliers drive model selection.\n- Label the conclusion inconclusive when the confidence gate fails.\n2. Short-term actions (1-2 weeks)\n- Collect additional tenure history before committing to a target date.\n- Investigate training or operating changes aligned with curve breaks.\nMeasurement targets:\n- Increase reliable observation coverage and model fit before operationalizing days to target.",
+    "source": "Contact Center New-Hire Ramp Intelligence_action_playbook.md",
+    "question_category": "new_hire_readiness"
+  },
+  {
+    "chunk_id": 5,
+    "title": "Scenario C - Direction-aware sigma exception",
+    "text": "[Section: Scenario C - Direction-aware sigma exception]\n\nSymptoms:\n- A cohort falls outside the one-sigma tenured boundary in the unfavorable direction.\n- The exception persists across consecutive periods or reaches the two-sigma boundary.\nLikely causes:\n- Ramp support may be insufficient for the affected KPI.\n- A program-specific mix shift may make the tenured comparator less representative.\nAction plan recommendations:\n1. Immediate actions (24-48 hours)\n- Confirm KPI direction and the applicable tenured comparison window.\n- Check whether the exception is isolated to one cohort or shared across the program.\n2. Short-term actions (1-2 weeks)\n- Set a cohort-specific recovery threshold and owner.\n- Review the benchmark definition if the operating mix changed materially.\nMeasurement targets:\n- Return inside the one-sigma boundary while preserving paired KPI guardrails.",
+    "source": "Contact Center New-Hire Ramp Intelligence_action_playbook.md",
+    "question_category": "new_hire_readiness"
+  },
+  {
+    "chunk_id": 6,
+    "title": "Scenario D - Forecasted readiness or staffing risk",
+    "text": "[Section: Scenario D - Forecasted readiness or staffing risk]\n\nSymptoms:\n- The forecast deteriorates in the unfavorable direction for multiple future periods.\n- The 80 percent interval overlaps a planning threshold.\nLikely causes:\n- Recent cohort mix or performance trend may be carrying into the forecast.\n- Wide uncertainty may reflect limited or volatile monthly history.\nAction plan recommendations:\n1. Immediate actions (24-48 hours)\n- Separate the point forecast from its lower and upper interval.\n- Compare forecast direction with current target attainment and cohort mix.\n2. Short-term actions (1-2 weeks)\n- Build base, downside, and upside staffing scenarios.\n- Refresh the forecast after the next complete period and monitor interval width.\nMeasurement targets:\n- Maintain a documented staffing response for the downside interval, not only the point estimate.",
+    "source": "Contact Center New-Hire Ramp Intelligence_action_playbook.md",
+    "question_category": "new_hire_readiness"
+  },
+  {
+    "chunk_id": 7,
+    "title": "Action Card: Readiness triage",
+    "text": "[Section: Action Card: Readiness triage]\n\nTrigger: A cohort misses the day-60 target-attainment expectation.\nActions:\n- Validate metric grain, direction, and denominator coverage.\n- Rank driver segments by impact and reliability.\n- Assign one owner, one recovery date, and paired KPI guardrails.\nExpected impact: Converts a broad cohort gap into a measurable, evidence-backed intervention.",
+    "source": "Contact Center New-Hire Ramp Intelligence_action_playbook.md",
+    "question_category": "new_hire_readiness"
+  },
+  {
+    "chunk_id": 8,
+    "title": "Action Card: Model confidence gate",
+    "text": "[Section: Action Card: Model confidence gate]\n\nTrigger: A stakeholder asks for a target date from an inconclusive curve.\nActions:\n- Show R-squared and all four candidate fits.\n- State that the evidence is inconclusive below the 0.30 threshold.\n- Request more history before committing to a date.\nExpected impact: Prevents false precision in workforce planning.",
+    "source": "Contact Center New-Hire Ramp Intelligence_action_playbook.md",
+    "question_category": "new_hire_readiness"
+  },
+  {
+    "chunk_id": 9,
+    "title": "Example Plan 1 - QA readiness lags while AHT improves",
+    "text": "[Section: Example Plan 1 - QA readiness lags while AHT improves]\n\nObserved trend: A fictional cohort improves lower-is-better AHT but remains below QA target after day 60 with a reliable selected curve.\nPlan:\n- Validate the QA denominator and compare the cohort across volume quartiles.\n- Prioritize coaching for the driver segment without setting an AHT-only incentive.\n- Monitor QA target attainment, AHT, and CSAT together for two weeks.\nSuccess metrics: QA target attainment and sigma position improve without materially worsening AHT or CSAT.",
+    "source": "Contact Center New-Hire Ramp Intelligence_action_playbook.md",
+    "question_category": "new_hire_readiness"
+  }
+]

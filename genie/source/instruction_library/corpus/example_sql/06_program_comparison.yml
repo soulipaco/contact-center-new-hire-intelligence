@@ -1,0 +1,20 @@
+id: f301b7f5c3ea4e3fb77cfa0196e30106
+question: Compare new-hire KPI performance across service programs.
+sql: |-
+  SELECT
+    service_program,
+    kpi,
+    ROUND(SUM(nominator) / NULLIF(SUM(denominator), 0), 4) AS weighted_kpi_score,
+    ROUND(100 * AVG(CASE WHEN at_static_target THEN 1.0 ELSE 0.0 END), 1) AS target_attainment_pct,
+    COUNT(DISTINCT agent_id) AS distinct_agents
+  FROM workspace.contact_center_gold.mv_new_hire_kpi_daily
+  WHERE kpi ILIKE :KpiPattern
+  GROUP BY service_program, kpi
+  ORDER BY weighted_kpi_score DESC
+parameters:
+  - name: KpiPattern
+    type_hint: STRING
+usage_guidance: |
+  Use for cross-program KPI comparisons.
+  MANDATORY OUTPUT CONTRACT: service_program, kpi, weighted_kpi_score, target_attainment_pct, distinct_agents.
+  MANDATORY ANTI-PATTERNS: For AHT and ACW, lower scores are better; explain directionality before ranking quality.

@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+.env
+.env.*
+env/local.yml
+env/*.private.yml
+env/*.secrets.yml
+*.token
+*.secret
+.databricks/
+.local/
+build/
+lakehouse/generated/*.sql
+!lakehouse/generated/.gitkeep
+reports/output/
+tmp/
+snapshots/exported_space.json
+legacy/
+example_data.xlsx
+*.xlsx
+.DS_Store
+Thumbs.db
+# Live validation output (may contain generated SQL and workspace identifiers)
+reports/output/

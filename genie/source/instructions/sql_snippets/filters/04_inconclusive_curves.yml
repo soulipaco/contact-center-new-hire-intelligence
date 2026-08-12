@@ -1,0 +1,9 @@
+id: e202a6e4b2d94d2eb66be9f085d20204
+display_name: Inconclusive Learning Curves
+sql: r_squared < 0.30
+synonyms: [weak fit, unreliable curve, low confidence]
+instruction: |
+  WHEN_TO_USE: Apply when the user asks which curves are inconclusive or unreliable.
+  SCOPE_TABLES: workspace.contact_center_gold.mv_learning_curve_best.
+  TIMEFRAME_HINT: any.
+  RISK_IF_MISUSED: Also filter is_best_model = true when judging the final curve for each cohort and KPI.

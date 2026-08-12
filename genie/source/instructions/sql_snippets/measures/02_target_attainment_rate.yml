@@ -1,0 +1,9 @@
+id: d101f5d3a1c84c1da55ad8ef74c10102
+alias: target_attainment_rate
+display_name: Static Target Attainment Rate
+sql: AVG(CASE WHEN at_static_target THEN 1.0 ELSE 0.0 END)
+synonyms: [percent meeting target, target hit rate, at target]
+instruction: |
+  WHEN_TO_USE: Use to calculate the share of agent-day observations meeting the static target.
+  SCOPE_TABLES: workspace.contact_center_gold.mv_new_hire_kpi_daily.
+  RISK_IF_MISUSED: Use the precomputed direction-aware flag; do not assume higher is always better.

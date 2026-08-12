@@ -1,0 +1,78 @@
+project:
+  name: my-contact-center-ramp-intelligence
+  mode: customer
+  catalog: main
+  schemas:
+    bronze: contact_center_bronze
+    silver: contact_center_silver
+    gold: contact_center_gold
+    models: contact_center_models
+
+analytics:
+  new_hire_days: 90
+  tenured_baseline_min_days: 91
+  learning_curve_max_days: 90
+  forecast_periods: 6
+  forecast_interval_width: 0.80
+  outliers:
+    z_score_threshold: 3.0
+    iqr_multiplier: 1.5
+
+features:
+  learning_curve_ml: true
+  forecasting: true
+  genie: true
+  dashboard: true
+  action_intelligence: false
+  vector_search: false
+
+source:
+  type: unity_catalog
+  tables:
+    observations: company_operations.performance.agent_kpi_daily
+    agents: company_operations.workforce.agent_assignments
+    targets: company_operations.performance.kpi_targets
+    training_classes: company_operations.workforce.training_classes
+  mappings:
+    observations:
+      performance_date: report_date
+      agent_id: employee_key
+      kpi: metric_name
+      numerator: metric_numerator
+      denominator: metric_denominator
+      volume: contacts_handled
+    agents:
+      agent_id: employee_key
+      agent_label: public_agent_label
+      service_program: client_program
+      site: site_name
+      market: market_name
+      language: support_language
+      channel: contact_channel
+      line_of_business: line_of_business
+      first_day_in_production: production_start_date
+      class_id: training_class_id
+      cohort_id: training_cohort_id
+      cohort_name: training_cohort_name
+      wave: training_wave
+      snapshot_effective_from: assignment_effective_date
+    targets:
+      service_program: client_program
+      cohort_id: training_cohort_id
+      kpi: metric_name
+      target: target_value
+      direction: direction
+      format: metric_format
+      lower_limit: display_lower_limit
+      upper_limit: display_upper_limit
+      effective_from: target_effective_date
+      effective_to: target_expiration_date
+      target_version: target_version
+    training_classes:
+      cohort_id: training_cohort_id
+      cohort_name: training_cohort_name
+      cohort_abbreviation: cohort_code
+      service_program: client_program
+      class_id: training_class_id
+      class_start_date: training_start_date
+      class_sort: display_order

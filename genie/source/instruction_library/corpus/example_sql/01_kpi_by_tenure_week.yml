@@ -1,0 +1,20 @@
+id: f301b7f5c3ea4e3fb77cfa0196e30101
+question: Show KPI performance by tenure week for new hires.
+sql: |-
+  SELECT
+    kpi,
+    tenure_week,
+    ROUND(SUM(nominator) / NULLIF(SUM(denominator), 0), 4) AS weighted_kpi_score,
+    COUNT(DISTINCT agent_id) AS distinct_agents
+  FROM workspace.contact_center_gold.mv_new_hire_kpi_daily
+  WHERE kpi ILIKE :KpiPattern
+  GROUP BY kpi, tenure_week
+  ORDER BY tenure_week
+parameters:
+  - name: KpiPattern
+    type_hint: STRING
+usage_guidance: |
+  Use for ramp progression, learning by week, or week-of-tenure trend questions.
+  Bind KpiPattern to a wildcard text value such as '%QA Score%'.
+  MANDATORY OUTPUT CONTRACT: kpi, tenure_week, weighted_kpi_score, distinct_agents.
+  MANDATORY ANTI-PATTERNS: Do not use calendar week and do not average agent_score directly.

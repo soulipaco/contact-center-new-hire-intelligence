@@ -1,0 +1,9 @@
+id: b401c806d4fb4f40a88d0b12a7f40112
+question: Compare cohort readiness using target attainment, days to target, and model confidence.
+answer_format: SQL
+sql: |-
+  SELECT service_program, cohort_name, kpi, static_target_attainment_rate,
+         days_to_target, best_model_r_squared
+  FROM workspace.contact_center_gold.mv_cohort_scorecard
+  ORDER BY static_target_attainment_rate DESC, days_to_target ASC NULLS LAST
+expected_behavior: Use the cohort scorecard and return performance plus model-confidence context.

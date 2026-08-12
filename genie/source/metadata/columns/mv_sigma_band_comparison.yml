@@ -1,0 +1,33 @@
+table: "workspace.contact_center_gold.mv_sigma_band_comparison"
+columns:
+  - column_name: period
+    enable_format_assistance: true
+  - column_name: service_program
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: cohort_id
+    enable_entity_matching: true
+  - column_name: cohort_name
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: kpi
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: normal
+    exclude: false
+  - column_name: cohort_score
+    enable_format_assistance: true
+  - column_name: tenured_3m_avg
+    enable_format_assistance: true
+  - column_name: target_1_sigma
+    enable_format_assistance: true
+  - column_name: target_2_sigma
+    enable_format_assistance: true
+  - column_name: target_3_sigma
+    enable_format_assistance: true
+  - column_name: at_1_sigma_rate
+    enable_format_assistance: true
+  - column_name: agent_count
+    exclude: false
+  - column_name: below_1_sigma
+    exclude: false

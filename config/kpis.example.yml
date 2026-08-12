@@ -1,0 +1,12 @@
+kpis:
+  - name: QA Score
+    direction: higher_is_better
+    format: percentage
+  - name: AHT
+    direction: lower_is_better
+    format: number
+
+# Customer mode normally reads targets and KPI attributes from the configured
+# target table. This file documents the accepted vocabulary and can be used by
+# source-adapter implementations that need a static KPI registry.
+

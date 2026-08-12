@@ -1,0 +1,859 @@
+{
+  "version": 2,
+  "config": {
+    "sample_questions": [
+      {
+        "id": "a01c9e9bd7704a46a54693f4a9d10101",
+        "question": [
+          "Which cohort reaches QA Score target fastest?"
+        ]
+      },
+      {
+        "id": "a01c9e9bd7704a46a54693f4a9d10102",
+        "question": [
+          "Show AHT by tenure week for new hires."
+        ]
+      },
+      {
+        "id": "a01c9e9bd7704a46a54693f4a9d10103",
+        "question": [
+          "What percentage of new hires meet target by day 60?"
+        ]
+      },
+      {
+        "id": "a01c9e9bd7704a46a54693f4a9d10104",
+        "question": [
+          "Which learning curves are inconclusive?"
+        ]
+      },
+      {
+        "id": "a01c9e9bd7704a46a54693f4a9d10105",
+        "question": [
+          "What is the six-month QA Score forecast by service program?"
+        ]
+      }
+    ]
+  },
+  "data_sources": {
+    "tables": [
+      {
+        "identifier": "workspace.contact_center_gold.mv_cohort_scorecard",
+        "description": [
+          "Cohort-level KPI scorecard with weighted performance, target attainment, and selected learning-curve diagnostics."
+        ],
+        "column_configs": [
+          {
+            "column_name": "agent_count",
+            "exclude": false
+          },
+          {
+            "column_name": "best_model_r_squared",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "best_model_type",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "cohort_id",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "cohort_name",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "days_to_target",
+            "exclude": false
+          },
+          {
+            "column_name": "kpi",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "learning_curve_interpretation",
+            "exclude": false
+          },
+          {
+            "column_name": "normal",
+            "exclude": false
+          },
+          {
+            "column_name": "service_program",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "static_target_attainment_rate",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "training_target_attainment_rate",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "weighted_score",
+            "enable_format_assistance": true
+          }
+        ]
+      },
+      {
+        "identifier": "workspace.contact_center_gold.mv_kpi_forecast",
+        "description": [
+          "Monthly actuals and six-month Prophet forecasts with 80 percent uncertainty intervals."
+        ],
+        "column_configs": [
+          {
+            "column_name": "forecast_lower",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "forecast_upper",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "forecast_value",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "interval_width",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "is_actual",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "kpi",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "model_run_date",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "model_type",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "normal",
+            "exclude": false
+          },
+          {
+            "column_name": "period",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "service_program",
+            "enable_entity_matching": true
+          }
+        ]
+      },
+      {
+        "identifier": "workspace.contact_center_gold.mv_learning_curve_best",
+        "description": [
+          "Best governed learning-curve model per service program, cohort, and KPI, including MLflow lineage and target timing."
+        ],
+        "column_configs": [
+          {
+            "column_name": "alpha",
+            "exclude": false
+          },
+          {
+            "column_name": "beta",
+            "exclude": false
+          },
+          {
+            "column_name": "cohort_id",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "cohort_name",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "days_to_target",
+            "exclude": false
+          },
+          {
+            "column_name": "interpretation",
+            "exclude": false
+          },
+          {
+            "column_name": "is_best_model",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "kpi",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "mlflow_run_id",
+            "exclude": false
+          },
+          {
+            "column_name": "model_type",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "normal",
+            "exclude": false
+          },
+          {
+            "column_name": "predicted_day_30",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "predicted_day_60",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "predicted_day_90",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "r_squared",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "registered_model_name",
+            "exclude": false
+          },
+          {
+            "column_name": "registered_model_version",
+            "exclude": false
+          },
+          {
+            "column_name": "run_date",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "service_program",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "static_target",
+            "enable_format_assistance": true
+          }
+        ]
+      },
+      {
+        "identifier": "workspace.contact_center_gold.mv_new_hire_kpi_daily",
+        "description": [
+          "Daily new-hire KPI facts with targets, sigma bands, volume reliability, pseudonymous agents, and operating dimensions."
+        ],
+        "column_configs": [
+          {
+            "column_name": "agent_id",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "agent_label",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "agent_score",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "at_1_sigma",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "at_static_target",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "at_training_target",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "channel",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "cohort_id",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "cohort_name",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "cumulative_volume",
+            "exclude": false
+          },
+          {
+            "column_name": "denominator",
+            "exclude": false
+          },
+          {
+            "column_name": "first_day_in_production",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "is_new_hire",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "kpi",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "kpi_format",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "language",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "line_of_business",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "market",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "nominator",
+            "exclude": false
+          },
+          {
+            "column_name": "normal",
+            "exclude": false
+          },
+          {
+            "column_name": "performance_date",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "service_program",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "site",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "static_target",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "target_1_sigma",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "target_2_sigma",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "target_3_sigma",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "tenure_day",
+            "exclude": false
+          },
+          {
+            "column_name": "tenure_week",
+            "exclude": false
+          },
+          {
+            "column_name": "training_target",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "volume",
+            "exclude": false
+          },
+          {
+            "column_name": "volume_bin",
+            "exclude": false
+          }
+        ]
+      },
+      {
+        "identifier": "workspace.contact_center_gold.mv_sigma_band_comparison",
+        "description": [
+          "Monthly cohort performance against direction-aware one, two, and three-sigma tenured benchmarks."
+        ],
+        "column_configs": [
+          {
+            "column_name": "agent_count",
+            "exclude": false
+          },
+          {
+            "column_name": "at_1_sigma_rate",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "below_1_sigma",
+            "exclude": false
+          },
+          {
+            "column_name": "cohort_id",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "cohort_name",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "cohort_score",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "kpi",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "normal",
+            "exclude": false
+          },
+          {
+            "column_name": "period",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "service_program",
+            "enable_entity_matching": true
+          },
+          {
+            "column_name": "target_1_sigma",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "target_2_sigma",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "target_3_sigma",
+            "enable_format_assistance": true
+          },
+          {
+            "column_name": "tenured_3m_avg",
+            "enable_format_assistance": true
+          }
+        ]
+      }
+    ]
+  },
+  "instructions": {
+    "text_instructions": [
+      {
+        "id": "c3f38aef0fce47dfaf0f0d489c55a101",
+        "content": [
+          "# General instructions\n\n> **Source ID:** `c3f38aef0fce47dfaf0f0d489c55a101`\n\nThis space analyzes contact-center new-hire ramp performance through governed, pseudonymous agent identifiers. The bundled demo is fully fictional; customer deployments must preserve the same privacy boundary.\n\n## Source routing\n\n- Use `workspace.contact_center_gold.mv_new_hire_kpi_daily` for daily agent performance, tenure progression, targets, sigma bands, volume reliability, channel, language, market, and site questions.\n- Use `workspace.contact_center_gold.mv_learning_curve_best` for selected model, R-squared, milestone prediction, MLflow lineage, interpretation, and days-to-target questions.\n- Use `workspace.contact_center_gold.mv_cohort_scorecard` for cohort rankings and compact cross-cohort comparisons.\n- Use `workspace.contact_center_gold.mv_sigma_band_comparison` for comparison with tenured one-, two-, and three-sigma benchmarks.\n- Use `workspace.contact_center_gold.mv_kpi_forecast` for actual-versus-Prophet-forecast monthly trend questions.\n\n## KPI directionality\n\n- `normal = 1` means higher is better. A score meets target when `agent_score >= target`.\n- `normal = -1` means lower is better. A score meets target when `agent_score <= target`.\n- Never rank AHT or ACW as if higher were better.\n\n## Grain and aggregation\n\n- `mv_new_hire_kpi_daily` is one row per new-hire agent, KPI, and performance date. Aggregate scores as `SUM(nominator) / NULLIF(SUM(denominator), 0)`, never as an unweighted average of `agent_score`.\n- A new hire has `is_new_hire = true` or `tenure_day <= 90`.\n- For week-of-ramp analysis, group by `tenure_week`, not calendar week.\n- `mv_learning_curve_best` already contains only the selected model per cohort and KPI. Do not add a second model-ranking layer.\n- `mv_kpi_forecast` contains historical actuals and future Prophet forecasts. Filter `is_actual = false` for future-only questions.\n- `target_1_sigma`, `target_2_sigma`, and `target_3_sigma` are direction-aware. For `normal = -1`, smaller scores are better even though the numerical band boundary is higher.\n- Use `below_1_sigma = true` for cohorts on the adverse side of the direction-aware one-sigma boundary.\n- `volume_bin = 1` represents the lowest-volume quartile and therefore the least reliable agent-level observations.\n\n## Filtering and output\n\n- Use `ILIKE '%value%'` for text filters.\n- Include every filtered dimension in the SELECT output.\n- Use bounded half-open date windows for date filters.\n- Show percentage KPIs as percentages and AHT, ACW, and Hold Time in seconds.\n- Treat R-squared below 0.30 as inconclusive.\n"
+        ]
+      }
+    ],
+    "example_question_sqls": [
+      {
+        "id": "f301b7f5c3ea4e3fb77cfa0196e30101",
+        "question": [
+          "Show KPI performance by tenure week for new hires."
+        ],
+        "sql": [
+          "SELECT\n  kpi,\n  tenure_week,\n  ROUND(SUM(nominator) / NULLIF(SUM(denominator), 0), 4) AS weighted_kpi_score,\n  COUNT(DISTINCT agent_id) AS distinct_agents\nFROM workspace.contact_center_gold.mv_new_hire_kpi_daily\nWHERE kpi ILIKE :KpiPattern\nGROUP BY kpi, tenure_week\nORDER BY tenure_week"
+        ],
+        "usage_guidance": [
+          "Use for ramp progression, learning by week, or week-of-tenure trend questions.\nBind KpiPattern to a wildcard text value such as '%QA Score%'.\nMANDATORY OUTPUT CONTRACT: kpi, tenure_week, weighted_kpi_score, distinct_agents.\nMANDATORY ANTI-PATTERNS: Do not use calendar week and do not average agent_score directly.\n"
+        ]
+      },
+      {
+        "id": "f301b7f5c3ea4e3fb77cfa0196e30102",
+        "question": [
+          "What percentage of new hires meet target by day 60?"
+        ],
+        "sql": [
+          "SELECT\n  kpi,\n  ROUND(100 * AVG(CASE WHEN at_static_target THEN 1.0 ELSE 0.0 END), 1) AS target_attainment_pct,\n  COUNT(DISTINCT agent_id) AS distinct_agents\nFROM workspace.contact_center_gold.mv_new_hire_kpi_daily\nWHERE tenure_day BETWEEN 55 AND 60\nGROUP BY kpi\nORDER BY target_attainment_pct DESC"
+        ],
+        "usage_guidance": [
+          "Use for milestone target-attainment questions near day 60.\nMANDATORY OUTPUT CONTRACT: kpi, target_attainment_pct, distinct_agents.\nMANDATORY ANTI-PATTERNS: Use at_static_target because it already handles KPI directionality.\n"
+        ]
+      },
+      {
+        "id": "f301b7f5c3ea4e3fb77cfa0196e30103",
+        "question": [
+          "Which cohorts reach KPI target fastest?"
+        ],
+        "sql": [
+          "SELECT\n  service_program,\n  cohort_name,\n  kpi,\n  model_type,\n  ROUND(r_squared, 3) AS r_squared,\n  days_to_target,\n  interpretation\nFROM workspace.contact_center_gold.mv_learning_curve_best\nWHERE kpi ILIKE :KpiPattern\nORDER BY days_to_target ASC NULLS LAST, r_squared DESC"
+        ],
+        "usage_guidance": [
+          "Use for fastest-ramp, time-to-proficiency, or cohort ranking questions.\nMANDATORY OUTPUT CONTRACT: service_program, cohort_name, kpi, model_type, r_squared, days_to_target, interpretation.\nMANDATORY ANTI-PATTERNS: Do not rank NULL days_to_target ahead of cohorts that reach target.\n"
+        ]
+      },
+      {
+        "id": "f301b7f5c3ea4e3fb77cfa0196e30104",
+        "question": [
+          "Which learning curves are inconclusive?"
+        ],
+        "sql": [
+          "SELECT\n  service_program,\n  cohort_name,\n  kpi,\n  model_type,\n  ROUND(r_squared, 3) AS r_squared,\n  interpretation\nFROM workspace.contact_center_gold.mv_learning_curve_best\nWHERE r_squared < 0.30\nORDER BY r_squared ASC, service_program, cohort_name, kpi"
+        ],
+        "usage_guidance": [
+          "Use for low-confidence, weak-fit, or inconclusive learning-curve questions.\nMANDATORY OUTPUT CONTRACT: service_program, cohort_name, kpi, model_type, r_squared, interpretation.\n"
+        ]
+      },
+      {
+        "id": "f301b7f5c3ea4e3fb77cfa0196e30105",
+        "question": [
+          "What is the six-month KPI forecast by service program?"
+        ],
+        "sql": [
+          "SELECT\n  period,\n  service_program,\n  kpi,\n  ROUND(forecast_value, 4) AS forecast_value,\n  ROUND(forecast_lower, 4) AS forecast_lower,\n  ROUND(forecast_upper, 4) AS forecast_upper\nFROM workspace.contact_center_gold.mv_kpi_forecast\nWHERE is_actual = false\n  AND kpi ILIKE :KpiPattern\nORDER BY service_program, period"
+        ],
+        "usage_guidance": [
+          "Use for future KPI outlook questions.\nMANDATORY OUTPUT CONTRACT: period, service_program, kpi, forecast_value, forecast_lower, forecast_upper.\nMANDATORY ANTI-PATTERNS: Do not describe is_actual = true rows as predictions.\n"
+        ]
+      },
+      {
+        "id": "f301b7f5c3ea4e3fb77cfa0196e30106",
+        "question": [
+          "Compare new-hire KPI performance across service programs."
+        ],
+        "sql": [
+          "SELECT\n  service_program,\n  kpi,\n  ROUND(SUM(nominator) / NULLIF(SUM(denominator), 0), 4) AS weighted_kpi_score,\n  ROUND(100 * AVG(CASE WHEN at_static_target THEN 1.0 ELSE 0.0 END), 1) AS target_attainment_pct,\n  COUNT(DISTINCT agent_id) AS distinct_agents\nFROM workspace.contact_center_gold.mv_new_hire_kpi_daily\nWHERE kpi ILIKE :KpiPattern\nGROUP BY service_program, kpi\nORDER BY weighted_kpi_score DESC"
+        ],
+        "usage_guidance": [
+          "Use for cross-program KPI comparisons.\nMANDATORY OUTPUT CONTRACT: service_program, kpi, weighted_kpi_score, target_attainment_pct, distinct_agents.\nMANDATORY ANTI-PATTERNS: For AHT and ACW, lower scores are better; explain directionality before ranking quality.\n"
+        ]
+      }
+    ],
+    "sql_snippets": {
+      "filters": [
+        {
+          "id": "e202a6e4b2d94d2eb66be9f085d20201",
+          "display_name": "New Hires Only",
+          "sql": [
+            "is_new_hire = true"
+          ],
+          "synonyms": [
+            "ramp agents",
+            "trainees",
+            "first 90 days"
+          ],
+          "instruction": [
+            "WHEN_TO_USE: Apply when the user asks about new hires or the ramp period.\nSCOPE_TABLES: workspace.contact_center_gold.mv_new_hire_kpi_daily.\nTIMEFRAME_HINT: Tenure days 1 through 90.\nRISK_IF_MISUSED: Do not apply to tenured benchmark questions.\n"
+          ]
+        },
+        {
+          "id": "e202a6e4b2d94d2eb66be9f085d20202",
+          "display_name": "Best Learning-Curve Model",
+          "sql": [
+            "is_best_model = true"
+          ],
+          "synonyms": [
+            "recommended curve",
+            "selected model",
+            "winning model"
+          ],
+          "instruction": [
+            "WHEN_TO_USE: Apply to normal learning-curve and days-to-target questions.\nSCOPE_TABLES: workspace.contact_center_gold.mv_learning_curve_best.\nTIMEFRAME_HINT: any.\nRISK_IF_MISUSED: Without this filter each cohort and KPI appears four times.\n"
+          ]
+        },
+        {
+          "id": "e202a6e4b2d94d2eb66be9f085d20203",
+          "display_name": "Future Forecast Only",
+          "sql": [
+            "is_actual = false"
+          ],
+          "synonyms": [
+            "future",
+            "projected",
+            "forecast"
+          ],
+          "instruction": [
+            "WHEN_TO_USE: Apply when the user asks only for future projections.\nSCOPE_TABLES: workspace.contact_center_gold.mv_kpi_forecast.\nTIMEFRAME_HINT: Six months after the latest actual period.\nRISK_IF_MISUSED: Historical rows are actual observations and should not be described as forecasts.\n"
+          ]
+        },
+        {
+          "id": "e202a6e4b2d94d2eb66be9f085d20204",
+          "display_name": "Inconclusive Learning Curves",
+          "sql": [
+            "r_squared < 0.30"
+          ],
+          "synonyms": [
+            "weak fit",
+            "unreliable curve",
+            "low confidence"
+          ],
+          "instruction": [
+            "WHEN_TO_USE: Apply when the user asks which curves are inconclusive or unreliable.\nSCOPE_TABLES: workspace.contact_center_gold.mv_learning_curve_best.\nTIMEFRAME_HINT: any.\nRISK_IF_MISUSED: Also filter is_best_model = true when judging the final curve for each cohort and KPI.\n"
+          ]
+        },
+        {
+          "id": "e202a6e4b2d94d2eb66be9f085d20205",
+          "display_name": "Service Program Text Match",
+          "sql": [
+            "service_program ILIKE '%value%'"
+          ],
+          "synonyms": [
+            "program",
+            "department",
+            "account"
+          ],
+          "instruction": [
+            "WHEN_TO_USE: Replace value with the requested service-program text.\nSCOPE_TABLES: all three contact-center serving views.\nTIMEFRAME_HINT: any.\nRISK_IF_MISUSED: Include service_program in SELECT and use ILIKE rather than exact equality.\n"
+          ]
+        }
+      ],
+      "measures": [
+        {
+          "id": "d101f5d3a1c84c1da55ad8ef74c10101",
+          "alias": "weighted_kpi_score",
+          "display_name": "Weighted KPI Score",
+          "sql": [
+            "SUM(nominator) / NULLIF(SUM(denominator), 0)"
+          ],
+          "synonyms": [
+            "average score",
+            "KPI score",
+            "weighted score"
+          ],
+          "instruction": [
+            "WHEN_TO_USE: Use for KPI score aggregation from mv_new_hire_kpi_daily.\nSCOPE_TABLES: workspace.contact_center_gold.mv_new_hire_kpi_daily.\nRISK_IF_MISUSED: Never use AVG(agent_score), because low-volume rows would receive too much weight.\n"
+          ]
+        },
+        {
+          "id": "d101f5d3a1c84c1da55ad8ef74c10102",
+          "alias": "target_attainment_rate",
+          "display_name": "Static Target Attainment Rate",
+          "sql": [
+            "AVG(CASE WHEN at_static_target THEN 1.0 ELSE 0.0 END)"
+          ],
+          "synonyms": [
+            "percent meeting target",
+            "target hit rate",
+            "at target"
+          ],
+          "instruction": [
+            "WHEN_TO_USE: Use to calculate the share of agent-day observations meeting the static target.\nSCOPE_TABLES: workspace.contact_center_gold.mv_new_hire_kpi_daily.\nRISK_IF_MISUSED: Use the precomputed direction-aware flag; do not assume higher is always better.\n"
+          ]
+        },
+        {
+          "id": "d101f5d3a1c84c1da55ad8ef74c10103",
+          "alias": "distinct_agents",
+          "display_name": "Distinct Agents",
+          "sql": [
+            "COUNT(DISTINCT agent_id)"
+          ],
+          "synonyms": [
+            "agent count",
+            "headcount",
+            "people"
+          ],
+          "instruction": [
+            "WHEN_TO_USE: Use for unique agent counts.\nSCOPE_TABLES: workspace.contact_center_gold.mv_new_hire_kpi_daily.\nRISK_IF_MISUSED: COUNT(*) counts agent-KPI-day observations, not people.\n"
+          ]
+        },
+        {
+          "id": "d101f5d3a1c84c1da55ad8ef74c10104",
+          "alias": "average_days_to_target",
+          "display_name": "Average Days to Target",
+          "sql": [
+            "AVG(days_to_target)"
+          ],
+          "synonyms": [
+            "ramp speed",
+            "time to proficiency",
+            "days to proficiency"
+          ],
+          "instruction": [
+            "WHEN_TO_USE: Use on best learning-curve rows for cohort ramp-speed summaries.\nSCOPE_TABLES: workspace.contact_center_gold.mv_learning_curve_best.\nRISK_IF_MISUSED: Filter is_best_model = true or all four candidate models will be averaged together.\n"
+          ]
+        },
+        {
+          "id": "d101f5d3a1c84c1da55ad8ef74c10105",
+          "alias": "average_r_squared",
+          "display_name": "Average R-Squared",
+          "sql": [
+            "AVG(r_squared)"
+          ],
+          "synonyms": [
+            "model fit",
+            "fit quality",
+            "curve confidence"
+          ],
+          "instruction": [
+            "WHEN_TO_USE: Use to summarize learning-curve fit quality.\nSCOPE_TABLES: workspace.contact_center_gold.mv_learning_curve_best.\nRISK_IF_MISUSED: Values below 0.30 are inconclusive and should not support strong conclusions.\n"
+          ]
+        }
+      ],
+      "expressions": []
+    }
+  },
+  "benchmarks": {
+    "questions": [
+      {
+        "id": "b401c806d4fb4f40a88d0b12a7f40101",
+        "question": [
+          "Show QA Score by tenure week for new hires."
+        ],
+        "answer": [
+          {
+            "format": "SQL",
+            "content": [
+              "SELECT tenure_week, SUM(nominator) / NULLIF(SUM(denominator), 0) AS weighted_kpi_score\nFROM workspace.contact_center_gold.mv_new_hire_kpi_daily\nWHERE kpi ILIKE '%QA Score%'\nGROUP BY tenure_week\nORDER BY tenure_week"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b401c806d4fb4f40a88d0b12a7f40102",
+        "question": [
+          "What percentage of new hires meet static target by day 60?"
+        ],
+        "answer": [
+          {
+            "format": "SQL",
+            "content": [
+              "SELECT kpi, 100 * AVG(CASE WHEN at_static_target THEN 1.0 ELSE 0.0 END) AS target_attainment_pct\nFROM workspace.contact_center_gold.mv_new_hire_kpi_daily\nWHERE tenure_day BETWEEN 55 AND 60\nGROUP BY kpi"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b401c806d4fb4f40a88d0b12a7f40103",
+        "question": [
+          "Which cohort reaches QA Score target fastest?"
+        ],
+        "answer": [
+          {
+            "format": "SQL",
+            "content": [
+              "SELECT service_program, cohort_name, days_to_target, r_squared\nFROM workspace.contact_center_gold.mv_learning_curve_best\nWHERE kpi ILIKE '%QA Score%'\nORDER BY days_to_target ASC NULLS LAST, r_squared DESC"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b401c806d4fb4f40a88d0b12a7f40104",
+        "question": [
+          "Which service program has the best new-hire AHT?"
+        ],
+        "answer": [
+          {
+            "format": "SQL",
+            "content": [
+              "SELECT service_program, SUM(nominator) / NULLIF(SUM(denominator), 0) AS weighted_aht\nFROM workspace.contact_center_gold.mv_new_hire_kpi_daily\nWHERE kpi ILIKE '%AHT%'\nGROUP BY service_program\nORDER BY weighted_aht ASC"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b401c806d4fb4f40a88d0b12a7f40105",
+        "question": [
+          "Which selected learning curves are inconclusive?"
+        ],
+        "answer": [
+          {
+            "format": "SQL",
+            "content": [
+              "SELECT service_program, cohort_name, kpi, model_type, r_squared\nFROM workspace.contact_center_gold.mv_learning_curve_best\nWHERE r_squared < 0.30\nORDER BY r_squared ASC"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b401c806d4fb4f40a88d0b12a7f40106",
+        "question": [
+          "What is the future QA Score forecast by service program?"
+        ],
+        "answer": [
+          {
+            "format": "SQL",
+            "content": [
+              "SELECT period, service_program, forecast_value, forecast_lower, forecast_upper\nFROM workspace.contact_center_gold.mv_kpi_forecast\nWHERE is_actual = false AND kpi ILIKE '%QA Score%'\nORDER BY service_program, period"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b401c806d4fb4f40a88d0b12a7f40107",
+        "question": [
+          "How many distinct pseudonymous new-hire agents are represented?"
+        ],
+        "answer": [
+          {
+            "format": "SQL",
+            "content": [
+              "SELECT COUNT(DISTINCT agent_id) AS distinct_new_hires\nFROM workspace.contact_center_gold.mv_new_hire_kpi_daily"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b401c806d4fb4f40a88d0b12a7f40108",
+        "question": [
+          "Which cohorts are on the adverse side of the direction-aware one-sigma boundary in the latest complete month?"
+        ],
+        "answer": [
+          {
+            "format": "SQL",
+            "content": [
+              "SELECT service_program, cohort_name, kpi, period, cohort_score, target_1_sigma, normal\nFROM workspace.contact_center_gold.mv_sigma_band_comparison\nWHERE period = (SELECT MAX(period) FROM workspace.contact_center_gold.mv_sigma_band_comparison)\n  AND below_1_sigma\nORDER BY service_program, cohort_name, kpi"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b401c806d4fb4f40a88d0b12a7f40109",
+        "question": [
+          "Explain the selected QA Pass Rate learning curve for each cohort."
+        ],
+        "answer": [
+          {
+            "format": "SQL",
+            "content": [
+              "SELECT service_program, cohort_name, model_type, r_squared, days_to_target, interpretation\nFROM workspace.contact_center_gold.mv_learning_curve_best\nWHERE kpi ILIKE '%QA Pass Rate%'\nORDER BY service_program, cohort_name"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b401c806d4fb4f40a88d0b12a7f40110",
+        "question": [
+          "Compare training and static targets for AHT by service program."
+        ],
+        "answer": [
+          {
+            "format": "SQL",
+            "content": [
+              "SELECT service_program, MAX(static_target) static_target, MAX(training_target) training_target\nFROM workspace.contact_center_gold.mv_new_hire_kpi_daily\nWHERE kpi = 'AHT'\nGROUP BY service_program\nORDER BY service_program"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b401c806d4fb4f40a88d0b12a7f40111",
+        "question": [
+          "How does QA Score differ across volume reliability quartiles?"
+        ],
+        "answer": [
+          {
+            "format": "SQL",
+            "content": [
+              "SELECT volume_bin, SUM(nominator) / NULLIF(SUM(denominator), 0) weighted_qa_score,\n       COUNT(DISTINCT agent_id) distinct_agents\nFROM workspace.contact_center_gold.mv_new_hire_kpi_daily\nWHERE kpi = 'QA Score'\nGROUP BY volume_bin ORDER BY volume_bin"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b401c806d4fb4f40a88d0b12a7f40112",
+        "question": [
+          "Compare cohort readiness using target attainment, days to target, and model confidence."
+        ],
+        "answer": [
+          {
+            "format": "SQL",
+            "content": [
+              "SELECT service_program, cohort_name, kpi, static_target_attainment_rate,\n       days_to_target, best_model_r_squared\nFROM workspace.contact_center_gold.mv_cohort_scorecard\nORDER BY static_target_attainment_rate DESC, days_to_target ASC NULLS LAST"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

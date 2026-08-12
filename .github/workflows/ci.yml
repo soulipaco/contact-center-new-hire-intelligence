@@ -1,0 +1,38 @@
+name: release-quality-gates
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements-dev.txt
+      - name: Validate accelerator configuration
+        run: |
+          python scripts/project/cli.py validate
+          python scripts/project/cli.py validate --config config/project.customer.example.yml
+          python scripts/project/cli.py validate --config examples/fictional_customer/config.yml
+      - name: Validate Genie configuration
+        run: python scripts/genie/materialize.py && python scripts/genie/build_space.py && python scripts/quality/validate_repository.py
+      - name: Rebuild dashboard and operating playbook
+        env:
+          PYTHONUTF8: "1"
+        run: |
+          python dashboard/build_dashboard.py
+          python action_intelligence/playbook_generator/generate_playbook.py --kit-format genie_kit --kit-root . --config config/playbook_blueprint.yml --output-dir action_intelligence/playbook_generator/generated
+      - name: Enforce privacy boundary
+        run: python scripts/quality/privacy_scan.py
+      - name: Compile Python sources
+        run: python -m compileall -q lakehouse scripts dashboard action_intelligence
+      - name: Run artifact contract tests
+        run: python -m pytest -q
+      - name: Reject credentials and confidential artifacts
+        run: |
+          test ! -f infrastructure/environments/local.yml
+          test -z "$(find . -type f \( -name '*.xlsx' -o -name '*.token' -o -name '*.secret' \) -print -quit)"

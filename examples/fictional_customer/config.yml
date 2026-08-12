@@ -1,0 +1,79 @@
+project:
+  name: fictional-customer-clean-room
+  mode: customer
+  catalog: workspace
+  schemas:
+    bronze: cc_clean_room_bronze
+    silver: cc_clean_room_silver
+    gold: cc_clean_room_gold
+    models: cc_clean_room_models
+
+analytics:
+  new_hire_days: 90
+  tenured_baseline_min_days: 91
+  learning_curve_max_days: 90
+  forecast_periods: 6
+  forecast_interval_width: 0.80
+  outliers:
+    z_score_threshold: 3.0
+    iqr_multiplier: 1.5
+
+features:
+  learning_curve_ml: true
+  forecasting: true
+  genie: true
+  dashboard: true
+  action_intelligence: false
+  vector_search: false
+
+source:
+  type: unity_catalog
+  tables:
+    observations: workspace.cc_fixture_source.kpi_daily
+    agents: workspace.cc_fixture_source.agent_assignments
+    targets: workspace.cc_fixture_source.target_schedule
+    training_classes: workspace.cc_fixture_source.academy_classes
+  mappings:
+    observations:
+      performance_date: report_date
+      agent_id: worker_key
+      kpi: metric_code
+      numerator: weighted_numerator
+      denominator: score_denominator
+      volume: handled_contacts
+    agents:
+      agent_id: worker_key
+      agent_label: public_agent_alias
+      service_program: account_name
+      site: location_name
+      market: market_segment
+      language: supported_language
+      channel: interaction_channel
+      line_of_business: business_unit
+      first_day_in_production: production_start
+      class_id: academy_class_key
+      cohort_id: academy_cohort_key
+      cohort_name: academy_cohort_name
+      wave: training_wave_name
+      snapshot_effective_from: assignment_start
+    targets:
+      service_program: account_name
+      cohort_id: academy_cohort_key
+      kpi: metric_code
+      target: goal
+      direction: performance_direction
+      format: value_format
+      lower_limit: valid_min
+      upper_limit: valid_max
+      effective_from: valid_from
+      effective_to: valid_to
+      target_version: version_number
+    training_classes:
+      cohort_id: academy_cohort_key
+      cohort_name: academy_cohort_name
+      cohort_abbreviation: academy_code
+      service_program: account_name
+      class_id: academy_class_key
+      class_start_date: academy_start
+      class_sort: presentation_order
+

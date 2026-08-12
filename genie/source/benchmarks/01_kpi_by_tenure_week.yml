@@ -1,0 +1,10 @@
+id: b401c806d4fb4f40a88d0b12a7f40101
+question: Show QA Score by tenure week for new hires.
+answer_format: SQL
+sql: |-
+  SELECT tenure_week, SUM(nominator) / NULLIF(SUM(denominator), 0) AS weighted_kpi_score
+  FROM workspace.contact_center_gold.mv_new_hire_kpi_daily
+  WHERE kpi ILIKE '%QA Score%'
+  GROUP BY tenure_week
+  ORDER BY tenure_week
+expected_behavior: Return one row per tenure week using a weighted score.

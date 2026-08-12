@@ -1,0 +1,5014 @@
+{
+  "datasets": [
+    {
+      "name": "ramp",
+      "displayName": "New-Hire Daily KPI",
+      "asset_name": "workspace.contact_center_gold.mv_new_hire_kpi_daily"
+    },
+    {
+      "name": "curves",
+      "displayName": "Best Learning Curves",
+      "asset_name": "workspace.contact_center_gold.mv_learning_curve_best"
+    },
+    {
+      "name": "learning_series",
+      "displayName": "Observed and Fitted Learning Curves",
+      "asset_name": "workspace.contact_center_gold.mv_learning_curve_series"
+    },
+    {
+      "name": "volume_progression",
+      "displayName": "Ramp Volume Progression",
+      "asset_name": "workspace.contact_center_gold.mv_ramp_volume_progression"
+    },
+    {
+      "name": "driver",
+      "displayName": "KPI Driver Regression",
+      "asset_name": "workspace.contact_center_gold.mv_kpi_driver_regression"
+    },
+    {
+      "name": "tenure_regression",
+      "displayName": "Tenure Regression Series",
+      "asset_name": "workspace.contact_center_gold.mv_tenure_regression_series"
+    },
+    {
+      "name": "volume_regression",
+      "displayName": "Volume Regression Series",
+      "asset_name": "workspace.contact_center_gold.mv_volume_regression_series"
+    },
+    {
+      "name": "process",
+      "displayName": "Process Control",
+      "asset_name": "workspace.contact_center_gold.mv_process_control"
+    },
+    {
+      "name": "process_series",
+      "displayName": "Process Control Series",
+      "asset_name": "workspace.contact_center_gold.mv_process_control_series"
+    },
+    {
+      "name": "lss",
+      "displayName": "Lean Six Sigma Summary",
+      "asset_name": "workspace.contact_center_gold.mv_lean_six_sigma_summary"
+    },
+    {
+      "name": "outliers",
+      "displayName": "Agent Weekly Outliers",
+      "asset_name": "workspace.contact_center_gold.mv_agent_weekly_outliers"
+    },
+    {
+      "name": "actions",
+      "displayName": "Action Intelligence Dashboard",
+      "asset_name": "workspace.contact_center_gold.mv_action_intelligence_dashboard"
+    },
+    {
+      "name": "scorecard",
+      "displayName": "Cohort Scorecard",
+      "asset_name": "workspace.contact_center_gold.mv_cohort_scorecard"
+    },
+    {
+      "name": "forecast",
+      "displayName": "Prophet KPI Forecast",
+      "asset_name": "workspace.contact_center_gold.mv_kpi_forecast"
+    },
+    {
+      "name": "forecast_series",
+      "displayName": "Forecast Interval Series",
+      "asset_name": "workspace.contact_center_gold.mv_kpi_forecast_series"
+    },
+    {
+      "name": "agent_series",
+      "displayName": "Agent Score and Target Series",
+      "asset_name": "workspace.contact_center_gold.mv_agent_target_series"
+    }
+  ],
+  "pages": [
+    {
+      "name": "executive",
+      "displayName": "Executive Summary",
+      "layout": [
+        {
+          "widget": {
+            "name": "filter_program",
+            "queries": [
+              {
+                "name": "filter_program_ramp",
+                "query": {
+                  "datasetName": "ramp",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "service_program_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_program_scorecard",
+                "query": {
+                  "datasetName": "scorecard",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "service_program_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Service program",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Service program",
+                    "fieldName": "service_program",
+                    "queryName": "filter_program_ramp"
+                  },
+                  {
+                    "displayName": "Service program",
+                    "fieldName": "service_program",
+                    "queryName": "filter_program_scorecard"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_cohort",
+            "queries": [
+              {
+                "name": "filter_cohort_ramp",
+                "query": {
+                  "datasetName": "ramp",
+                  "fields": [
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "cohort_name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_cohort_scorecard",
+                "query": {
+                  "datasetName": "scorecard",
+                  "fields": [
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "cohort_name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Cohort",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Cohort",
+                    "fieldName": "cohort_name",
+                    "queryName": "filter_cohort_ramp"
+                  },
+                  {
+                    "displayName": "Cohort",
+                    "fieldName": "cohort_name",
+                    "queryName": "filter_cohort_scorecard"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_kpi",
+            "queries": [
+              {
+                "name": "filter_kpi_ramp",
+                "query": {
+                  "datasetName": "ramp",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "kpi_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_kpi_scorecard",
+                "query": {
+                  "datasetName": "scorecard",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "kpi_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "KPI",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "KPI",
+                    "fieldName": "kpi",
+                    "queryName": "filter_kpi_ramp"
+                  },
+                  {
+                    "displayName": "KPI",
+                    "fieldName": "kpi",
+                    "queryName": "filter_kpi_scorecard"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_performance_date",
+            "queries": [
+              {
+                "name": "filter_performance_date_ramp",
+                "query": {
+                  "datasetName": "ramp",
+                  "fields": [
+                    {
+                      "name": "performance_date",
+                      "expression": "`performance_date`"
+                    },
+                    {
+                      "name": "performance_date_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Date",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Date",
+                    "fieldName": "performance_date",
+                    "queryName": "filter_performance_date_ramp"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "new_hires",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ramp",
+                  "fields": [
+                    {
+                      "name": "distinct_new_hires",
+                      "expression": "COUNT(DISTINCT `agent_id`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "New Hires Represented",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "distinct_new_hires"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "days_to_target",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "scorecard",
+                  "fields": [
+                    {
+                      "name": "days_to_target",
+                      "expression": "AVG(`days_to_target`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Average Days to Target",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "days_to_target"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "target_attainment",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ramp",
+                  "fields": [
+                    {
+                      "name": "attainment_rate",
+                      "expression": "COUNT_IF(`at_static_target`) * 100.0 / NULLIF(COUNT(*), 0)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Static Target Attainment (%)",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "attainment_rate"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "training_attainment",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ramp",
+                  "fields": [
+                    {
+                      "name": "training_rate",
+                      "expression": "COUNT_IF(`at_training_target`) * 100.0 / NULLIF(COUNT(*), 0)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Training Target Attainment (%)",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "training_rate"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "ramp_trend",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ramp",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "tenure_week",
+                      "expression": "`tenure_week`"
+                    },
+                    {
+                      "name": "attainment_rate",
+                      "expression": "COUNT_IF(`at_static_target`) * 100.0 / NULLIF(COUNT(*), 0)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Static Target Attainment by Tenure Week and KPI (%)",
+                "showTitle": true
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "tenure_week",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "attainment_rate",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "kpi",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 5,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "program_attainment",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "scorecard",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "static_target_attainment_rate",
+                      "expression": "AVG(`static_target_attainment_rate`) * 100.0"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Target Attainment by Service Program (%)",
+                "showTitle": true
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "static_target_attainment_rate",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "service_program",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 5,
+            "y": 5,
+            "width": 3,
+            "height": 7
+          }
+        }
+      ]
+    },
+    {
+      "name": "actions",
+      "displayName": "Insight & Action Center",
+      "layout": [
+        {
+          "widget": {
+            "name": "action_plan_count",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "actions",
+                  "fields": [
+                    {
+                      "name": "plan_count",
+                      "expression": "COUNT(`analysis_id`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Current Action Plans",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "plan_count"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "action_warning_count",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "actions",
+                  "fields": [
+                    {
+                      "name": "warning_count",
+                      "expression": "COUNT(`warning`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Research Warnings",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "warning_count"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 0,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "retrieved_context",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "actions",
+                  "fields": [
+                    {
+                      "name": "context_size",
+                      "expression": "COALESCE(SUM(`retrieved_context_characters`), 0)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Retrieved Context Characters",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "context_size"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 0,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "insight_feed",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "actions",
+                  "fields": [
+                    {
+                      "name": "module_status",
+                      "expression": "`module_status`"
+                    },
+                    {
+                      "name": "generated_at",
+                      "expression": "`generated_at`"
+                    },
+                    {
+                      "name": "question_category",
+                      "expression": "`question_category`"
+                    },
+                    {
+                      "name": "question",
+                      "expression": "`question`"
+                    },
+                    {
+                      "name": "insight_summary",
+                      "expression": "`insight_summary`"
+                    },
+                    {
+                      "name": "warning",
+                      "expression": "`warning`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Action Intelligence Status and Latest Insight",
+                "showTitle": true
+              },
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "module_status"
+                  },
+                  {
+                    "fieldName": "generated_at"
+                  },
+                  {
+                    "fieldName": "question_category"
+                  },
+                  {
+                    "fieldName": "question"
+                  },
+                  {
+                    "fieldName": "insight_summary"
+                  },
+                  {
+                    "fieldName": "warning"
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 3,
+            "width": 8,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "action_feed",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "actions",
+                  "fields": [
+                    {
+                      "name": "module_status",
+                      "expression": "`module_status`"
+                    },
+                    {
+                      "name": "generated_at",
+                      "expression": "`generated_at`"
+                    },
+                    {
+                      "name": "recommended_action_plan",
+                      "expression": "`recommended_action_plan`"
+                    },
+                    {
+                      "name": "model_endpoint",
+                      "expression": "`model_endpoint`"
+                    },
+                    {
+                      "name": "retrieved_context_characters",
+                      "expression": "`retrieved_context_characters`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Evidence-Grounded Recommended Action Plan",
+                "showTitle": true
+              },
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "module_status"
+                  },
+                  {
+                    "fieldName": "generated_at"
+                  },
+                  {
+                    "fieldName": "recommended_action_plan"
+                  },
+                  {
+                    "fieldName": "model_endpoint"
+                  },
+                  {
+                    "fieldName": "retrieved_context_characters"
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 9,
+            "width": 8,
+            "height": 9
+          }
+        }
+      ]
+    },
+    {
+      "name": "learning",
+      "displayName": "Learning & Volume",
+      "layout": [
+        {
+          "widget": {
+            "name": "filter_program",
+            "queries": [
+              {
+                "name": "filter_program_curves",
+                "query": {
+                  "datasetName": "curves",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "service_program_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_program_learning_series",
+                "query": {
+                  "datasetName": "learning_series",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "service_program_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_program_volume_progression",
+                "query": {
+                  "datasetName": "volume_progression",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "service_program_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Service program",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Service program",
+                    "fieldName": "service_program",
+                    "queryName": "filter_program_curves"
+                  },
+                  {
+                    "displayName": "Service program",
+                    "fieldName": "service_program",
+                    "queryName": "filter_program_learning_series"
+                  },
+                  {
+                    "displayName": "Service program",
+                    "fieldName": "service_program",
+                    "queryName": "filter_program_volume_progression"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_cohort",
+            "queries": [
+              {
+                "name": "filter_cohort_curves",
+                "query": {
+                  "datasetName": "curves",
+                  "fields": [
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "cohort_name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_cohort_learning_series",
+                "query": {
+                  "datasetName": "learning_series",
+                  "fields": [
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "cohort_name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_cohort_volume_progression",
+                "query": {
+                  "datasetName": "volume_progression",
+                  "fields": [
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "cohort_name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Cohort",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Cohort",
+                    "fieldName": "cohort_name",
+                    "queryName": "filter_cohort_curves"
+                  },
+                  {
+                    "displayName": "Cohort",
+                    "fieldName": "cohort_name",
+                    "queryName": "filter_cohort_learning_series"
+                  },
+                  {
+                    "displayName": "Cohort",
+                    "fieldName": "cohort_name",
+                    "queryName": "filter_cohort_volume_progression"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_kpi",
+            "queries": [
+              {
+                "name": "filter_kpi_curves",
+                "query": {
+                  "datasetName": "curves",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "kpi_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_kpi_learning_series",
+                "query": {
+                  "datasetName": "learning_series",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "kpi_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_kpi_volume_progression",
+                "query": {
+                  "datasetName": "volume_progression",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "kpi_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "KPI",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "KPI",
+                    "fieldName": "kpi",
+                    "queryName": "filter_kpi_curves"
+                  },
+                  {
+                    "displayName": "KPI",
+                    "fieldName": "kpi",
+                    "queryName": "filter_kpi_learning_series"
+                  },
+                  {
+                    "displayName": "KPI",
+                    "fieldName": "kpi",
+                    "queryName": "filter_kpi_volume_progression"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "average_r2",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "curves",
+                  "fields": [
+                    {
+                      "name": "average_r2",
+                      "expression": "AVG(`r_squared`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Average Selected-Model R-squared",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "average_r2"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "average_days",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "curves",
+                  "fields": [
+                    {
+                      "name": "average_days",
+                      "expression": "AVG(`days_to_target`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Average Days to Target",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "average_days"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "observed_fitted_curve",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "learning_series",
+                  "fields": [
+                    {
+                      "name": "series_name",
+                      "expression": "`series_name`"
+                    },
+                    {
+                      "name": "tenure_day",
+                      "expression": "`tenure_day`"
+                    },
+                    {
+                      "name": "target_index",
+                      "expression": "AVG(`target_index`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Observed vs Selected Learning Curve (Target Index)",
+                "showTitle": true
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "tenure_day",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "target_index",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "series_name",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 5,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "weekly_volume_curve",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "volume_progression",
+                  "fields": [
+                    {
+                      "name": "tenure_week",
+                      "expression": "`tenure_week`"
+                    },
+                    {
+                      "name": "average_weekly_volume_per_agent",
+                      "expression": "AVG(`average_weekly_volume_per_agent`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Average Weekly Volume per Agent by Tenure Week",
+                "showTitle": true
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "tenure_week",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "average_weekly_volume_per_agent",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 5,
+            "y": 5,
+            "width": 3,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "cumulative_volume_curve",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "volume_progression",
+                  "fields": [
+                    {
+                      "name": "tenure_week",
+                      "expression": "`tenure_week`"
+                    },
+                    {
+                      "name": "average_cumulative_volume_per_agent",
+                      "expression": "AVG(`average_cumulative_volume_per_agent`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Average Cumulative Volume per Agent",
+                "showTitle": true
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "tenure_week",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "average_cumulative_volume_per_agent",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 13,
+            "width": 4,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "days_by_cohort",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "curves",
+                  "fields": [
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "days_to_target",
+                      "expression": "AVG(`days_to_target`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Days to Target by Cohort",
+                "showTitle": true
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "days_to_target",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "cohort_name",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 13,
+            "width": 4,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "curve_models",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "curves",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "model_type",
+                      "expression": "`model_type`"
+                    },
+                    {
+                      "name": "r_squared",
+                      "expression": "`r_squared`"
+                    },
+                    {
+                      "name": "days_to_target",
+                      "expression": "`days_to_target`"
+                    },
+                    {
+                      "name": "registered_model_version",
+                      "expression": "`registered_model_version`"
+                    },
+                    {
+                      "name": "interpretation",
+                      "expression": "`interpretation`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Governed Learning-Curve Results",
+                "showTitle": true
+              },
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "service_program"
+                  },
+                  {
+                    "fieldName": "cohort_name"
+                  },
+                  {
+                    "fieldName": "kpi"
+                  },
+                  {
+                    "fieldName": "model_type"
+                  },
+                  {
+                    "fieldName": "r_squared"
+                  },
+                  {
+                    "fieldName": "days_to_target"
+                  },
+                  {
+                    "fieldName": "registered_model_version"
+                  },
+                  {
+                    "fieldName": "interpretation"
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 20,
+            "width": 8,
+            "height": 7
+          }
+        }
+      ]
+    },
+    {
+      "name": "drivers",
+      "displayName": "Drivers & Regression",
+      "layout": [
+        {
+          "widget": {
+            "name": "filter_program",
+            "queries": [
+              {
+                "name": "filter_program_driver",
+                "query": {
+                  "datasetName": "driver",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "service_program_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_program_tenure_regression",
+                "query": {
+                  "datasetName": "tenure_regression",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "service_program_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_program_volume_regression",
+                "query": {
+                  "datasetName": "volume_regression",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "service_program_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Service program",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Service program",
+                    "fieldName": "service_program",
+                    "queryName": "filter_program_driver"
+                  },
+                  {
+                    "displayName": "Service program",
+                    "fieldName": "service_program",
+                    "queryName": "filter_program_tenure_regression"
+                  },
+                  {
+                    "displayName": "Service program",
+                    "fieldName": "service_program",
+                    "queryName": "filter_program_volume_regression"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_cohort",
+            "queries": [
+              {
+                "name": "filter_cohort_driver",
+                "query": {
+                  "datasetName": "driver",
+                  "fields": [
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "cohort_name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_cohort_tenure_regression",
+                "query": {
+                  "datasetName": "tenure_regression",
+                  "fields": [
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "cohort_name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_cohort_volume_regression",
+                "query": {
+                  "datasetName": "volume_regression",
+                  "fields": [
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "cohort_name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Cohort",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Cohort",
+                    "fieldName": "cohort_name",
+                    "queryName": "filter_cohort_driver"
+                  },
+                  {
+                    "displayName": "Cohort",
+                    "fieldName": "cohort_name",
+                    "queryName": "filter_cohort_tenure_regression"
+                  },
+                  {
+                    "displayName": "Cohort",
+                    "fieldName": "cohort_name",
+                    "queryName": "filter_cohort_volume_regression"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_kpi",
+            "queries": [
+              {
+                "name": "filter_kpi_driver",
+                "query": {
+                  "datasetName": "driver",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "kpi_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_kpi_tenure_regression",
+                "query": {
+                  "datasetName": "tenure_regression",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "kpi_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_kpi_volume_regression",
+                "query": {
+                  "datasetName": "volume_regression",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "kpi_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "KPI",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "KPI",
+                    "fieldName": "kpi",
+                    "queryName": "filter_kpi_driver"
+                  },
+                  {
+                    "displayName": "KPI",
+                    "fieldName": "kpi",
+                    "queryName": "filter_kpi_tenure_regression"
+                  },
+                  {
+                    "displayName": "KPI",
+                    "fieldName": "kpi",
+                    "queryName": "filter_kpi_volume_regression"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "tenure_correlation",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "driver",
+                  "fields": [
+                    {
+                      "name": "tenure_r",
+                      "expression": "AVG(`abs_tenure_correlation`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Average |Tenure\u2013KPI Correlation|",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "tenure_r"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "volume_correlation",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "driver",
+                  "fields": [
+                    {
+                      "name": "volume_r",
+                      "expression": "AVG(`abs_volume_correlation`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Average |Volume\u2013KPI Correlation|",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "volume_r"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "tenure_regression",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "tenure_regression",
+                  "fields": [
+                    {
+                      "name": "series_name",
+                      "expression": "`series_name`"
+                    },
+                    {
+                      "name": "average_tenure_day",
+                      "expression": "`average_tenure_day`"
+                    },
+                    {
+                      "name": "series_value",
+                      "expression": "AVG(`series_value`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "KPI Target Index vs Tenure with Regression Fit",
+                "showTitle": true
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "average_tenure_day",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "series_value",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "series_name",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 4,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "volume_regression",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "volume_regression",
+                  "fields": [
+                    {
+                      "name": "series_name",
+                      "expression": "`series_name`"
+                    },
+                    {
+                      "name": "average_daily_volume",
+                      "expression": "`average_daily_volume`"
+                    },
+                    {
+                      "name": "series_value",
+                      "expression": "AVG(`series_value`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "KPI Target Index vs Average Daily Volume",
+                "showTitle": true
+              },
+              "widgetType": "scatter",
+              "encodings": {
+                "x": {
+                  "fieldName": "average_daily_volume",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "series_value",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "series_name",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 5,
+            "width": 4,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "volume_attainment",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "driver",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "average_daily_volume",
+                      "expression": "`average_daily_volume`"
+                    },
+                    {
+                      "name": "target_attainment_rate",
+                      "expression": "AVG(`target_attainment_rate`) * 100.0"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Target Attainment vs Average Daily Volume",
+                "showTitle": true
+              },
+              "widgetType": "scatter",
+              "encodings": {
+                "x": {
+                  "fieldName": "average_daily_volume",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "target_attainment_rate",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "kpi",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 13,
+            "width": 4,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "driver_detail",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "driver",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "tenure_week",
+                      "expression": "`tenure_week`"
+                    },
+                    {
+                      "name": "average_tenure_day",
+                      "expression": "`average_tenure_day`"
+                    },
+                    {
+                      "name": "average_daily_volume",
+                      "expression": "`average_daily_volume`"
+                    },
+                    {
+                      "name": "average_cumulative_volume",
+                      "expression": "`average_cumulative_volume`"
+                    },
+                    {
+                      "name": "target_index",
+                      "expression": "`target_index`"
+                    },
+                    {
+                      "name": "target_attainment_rate",
+                      "expression": "`target_attainment_rate`"
+                    },
+                    {
+                      "name": "tenure_correlation",
+                      "expression": "`tenure_correlation`"
+                    },
+                    {
+                      "name": "volume_correlation",
+                      "expression": "`volume_correlation`"
+                    },
+                    {
+                      "name": "agent_count",
+                      "expression": "`agent_count`"
+                    },
+                    {
+                      "name": "observation_count",
+                      "expression": "`observation_count`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Volume-Aware Regression Diagnostics",
+                "showTitle": true
+              },
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "service_program"
+                  },
+                  {
+                    "fieldName": "cohort_name"
+                  },
+                  {
+                    "fieldName": "kpi"
+                  },
+                  {
+                    "fieldName": "tenure_week"
+                  },
+                  {
+                    "fieldName": "average_tenure_day"
+                  },
+                  {
+                    "fieldName": "average_daily_volume"
+                  },
+                  {
+                    "fieldName": "average_cumulative_volume"
+                  },
+                  {
+                    "fieldName": "target_index"
+                  },
+                  {
+                    "fieldName": "target_attainment_rate"
+                  },
+                  {
+                    "fieldName": "tenure_correlation"
+                  },
+                  {
+                    "fieldName": "volume_correlation"
+                  },
+                  {
+                    "fieldName": "agent_count"
+                  },
+                  {
+                    "fieldName": "observation_count"
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 13,
+            "width": 4,
+            "height": 7
+          }
+        }
+      ]
+    },
+    {
+      "name": "process",
+      "displayName": "Process Control",
+      "layout": [
+        {
+          "widget": {
+            "name": "filter_program",
+            "queries": [
+              {
+                "name": "filter_program_process",
+                "query": {
+                  "datasetName": "process",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "service_program_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_program_process_series",
+                "query": {
+                  "datasetName": "process_series",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "service_program_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_program_lss",
+                "query": {
+                  "datasetName": "lss",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "service_program_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Service program",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Service program",
+                    "fieldName": "service_program",
+                    "queryName": "filter_program_process"
+                  },
+                  {
+                    "displayName": "Service program",
+                    "fieldName": "service_program",
+                    "queryName": "filter_program_process_series"
+                  },
+                  {
+                    "displayName": "Service program",
+                    "fieldName": "service_program",
+                    "queryName": "filter_program_lss"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_cohort",
+            "queries": [
+              {
+                "name": "filter_cohort_process",
+                "query": {
+                  "datasetName": "process",
+                  "fields": [
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "cohort_name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_cohort_process_series",
+                "query": {
+                  "datasetName": "process_series",
+                  "fields": [
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "cohort_name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_cohort_lss",
+                "query": {
+                  "datasetName": "lss",
+                  "fields": [
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "cohort_name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Cohort",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Cohort",
+                    "fieldName": "cohort_name",
+                    "queryName": "filter_cohort_process"
+                  },
+                  {
+                    "displayName": "Cohort",
+                    "fieldName": "cohort_name",
+                    "queryName": "filter_cohort_process_series"
+                  },
+                  {
+                    "displayName": "Cohort",
+                    "fieldName": "cohort_name",
+                    "queryName": "filter_cohort_lss"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_kpi",
+            "queries": [
+              {
+                "name": "filter_kpi_process",
+                "query": {
+                  "datasetName": "process",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "kpi_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_kpi_process_series",
+                "query": {
+                  "datasetName": "process_series",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "kpi_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_kpi_lss",
+                "query": {
+                  "datasetName": "lss",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "kpi_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "KPI",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "KPI",
+                    "fieldName": "kpi",
+                    "queryName": "filter_kpi_process"
+                  },
+                  {
+                    "displayName": "KPI",
+                    "fieldName": "kpi",
+                    "queryName": "filter_kpi_process_series"
+                  },
+                  {
+                    "displayName": "KPI",
+                    "fieldName": "kpi",
+                    "queryName": "filter_kpi_lss"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_period",
+            "queries": [
+              {
+                "name": "filter_period_process",
+                "query": {
+                  "datasetName": "process",
+                  "fields": [
+                    {
+                      "name": "period",
+                      "expression": "`period`"
+                    },
+                    {
+                      "name": "period_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_period_process_series",
+                "query": {
+                  "datasetName": "process_series",
+                  "fields": [
+                    {
+                      "name": "period",
+                      "expression": "`period`"
+                    },
+                    {
+                      "name": "period_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Date",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Date",
+                    "fieldName": "period",
+                    "queryName": "filter_period_process"
+                  },
+                  {
+                    "displayName": "Date",
+                    "fieldName": "period",
+                    "queryName": "filter_period_process_series"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "special_causes",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "process",
+                  "fields": [
+                    {
+                      "name": "special_causes",
+                      "expression": "COUNT_IF(`special_cause_flag`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Adverse >3 Sigma Signals",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "special_causes"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "first_pass_yield",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "lss",
+                  "fields": [
+                    {
+                      "name": "yield_pct",
+                      "expression": "SUM(`opportunity_count` - `defect_count`) * 100.0 / NULLIF(SUM(`opportunity_count`), 0)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "First-Pass Yield (%)",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "yield_pct"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "dpmo",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "lss",
+                  "fields": [
+                    {
+                      "name": "dpmo",
+                      "expression": "SUM(`defect_count`) * 1000000.0 / NULLIF(SUM(`opportunity_count`), 0)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "DPMO",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "dpmo"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "control_chart",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "process_series",
+                  "fields": [
+                    {
+                      "name": "series_name",
+                      "expression": "`series_name`"
+                    },
+                    {
+                      "name": "period",
+                      "expression": "`period`"
+                    },
+                    {
+                      "name": "series_value",
+                      "expression": "AVG(`series_value`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Direction-Aware Process Control Chart",
+                "showTitle": true
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "period",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "series_value",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "series_name",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 5,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "defects_by_kpi",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "lss",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "defect_count",
+                      "expression": "SUM(`defect_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Readiness Defects by KPI",
+                "showTitle": true
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "defect_count",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "kpi",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 5,
+            "y": 5,
+            "width": 3,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "control_detail",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "process",
+                  "fields": [
+                    {
+                      "name": "period",
+                      "expression": "`period`"
+                    },
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "directional_z_score",
+                      "expression": "`directional_z_score`"
+                    },
+                    {
+                      "name": "control_status",
+                      "expression": "`control_status`"
+                    },
+                    {
+                      "name": "cohort_score",
+                      "expression": "`cohort_score`"
+                    },
+                    {
+                      "name": "centerline",
+                      "expression": "`centerline`"
+                    },
+                    {
+                      "name": "process_std",
+                      "expression": "`process_std`"
+                    },
+                    {
+                      "name": "agent_count",
+                      "expression": "`agent_count`"
+                    },
+                    {
+                      "name": "total_volume",
+                      "expression": "`total_volume`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Special-Cause and Control Detail",
+                "showTitle": true
+              },
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "period"
+                  },
+                  {
+                    "fieldName": "service_program"
+                  },
+                  {
+                    "fieldName": "cohort_name"
+                  },
+                  {
+                    "fieldName": "kpi"
+                  },
+                  {
+                    "fieldName": "directional_z_score"
+                  },
+                  {
+                    "fieldName": "control_status"
+                  },
+                  {
+                    "fieldName": "cohort_score"
+                  },
+                  {
+                    "fieldName": "centerline"
+                  },
+                  {
+                    "fieldName": "process_std"
+                  },
+                  {
+                    "fieldName": "agent_count"
+                  },
+                  {
+                    "fieldName": "total_volume"
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 13,
+            "width": 8,
+            "height": 7
+          }
+        }
+      ]
+    },
+    {
+      "name": "outliers",
+      "displayName": "Outliers",
+      "layout": [
+        {
+          "widget": {
+            "name": "filter_program",
+            "queries": [
+              {
+                "name": "filter_program_outliers",
+                "query": {
+                  "datasetName": "outliers",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "service_program_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Service program",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Service program",
+                    "fieldName": "service_program",
+                    "queryName": "filter_program_outliers"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_cohort",
+            "queries": [
+              {
+                "name": "filter_cohort_outliers",
+                "query": {
+                  "datasetName": "outliers",
+                  "fields": [
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "cohort_name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Cohort",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Cohort",
+                    "fieldName": "cohort_name",
+                    "queryName": "filter_cohort_outliers"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_kpi",
+            "queries": [
+              {
+                "name": "filter_kpi_outliers",
+                "query": {
+                  "datasetName": "outliers",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "kpi_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "KPI",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "KPI",
+                    "fieldName": "kpi",
+                    "queryName": "filter_kpi_outliers"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "adverse_outliers",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "outliers",
+                  "fields": [
+                    {
+                      "name": "outlier_count",
+                      "expression": "COUNT_IF(`adverse_outlier`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Adverse Agent-Week Outliers",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "outlier_count"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "outlier_rate",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "outliers",
+                  "fields": [
+                    {
+                      "name": "outlier_rate",
+                      "expression": "COUNT_IF(`adverse_outlier`) * 100.0 / NULLIF(COUNT(*), 0)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Adverse Outlier Rate (%)",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "outlier_rate"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "outlier_volume",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "outliers",
+                  "fields": [
+                    {
+                      "name": "outlier_status",
+                      "expression": "`outlier_status`"
+                    },
+                    {
+                      "name": "total_volume",
+                      "expression": "`total_volume`"
+                    },
+                    {
+                      "name": "directional_z_score",
+                      "expression": "AVG(`directional_z_score`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Directional Z-score vs Weekly Volume",
+                "showTitle": true
+              },
+              "widgetType": "scatter",
+              "encodings": {
+                "x": {
+                  "fieldName": "total_volume",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "directional_z_score",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "outlier_status",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 5,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "outliers_by_kpi",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "outliers",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "adverse_count",
+                      "expression": "COUNT_IF(`adverse_outlier`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Adverse Outliers by KPI",
+                "showTitle": true
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "adverse_count",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "kpi",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 5,
+            "y": 5,
+            "width": 3,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "outlier_detail",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "outliers",
+                  "fields": [
+                    {
+                      "name": "agent_label",
+                      "expression": "`agent_label`"
+                    },
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "tenure_week",
+                      "expression": "`tenure_week`"
+                    },
+                    {
+                      "name": "agent_score",
+                      "expression": "`agent_score`"
+                    },
+                    {
+                      "name": "total_volume",
+                      "expression": "`total_volume`"
+                    },
+                    {
+                      "name": "z_score",
+                      "expression": "`z_score`"
+                    },
+                    {
+                      "name": "directional_z_score",
+                      "expression": "`directional_z_score`"
+                    },
+                    {
+                      "name": "iqr_lower_bound",
+                      "expression": "`iqr_lower_bound`"
+                    },
+                    {
+                      "name": "iqr_upper_bound",
+                      "expression": "`iqr_upper_bound`"
+                    },
+                    {
+                      "name": "z_score_outlier",
+                      "expression": "`z_score_outlier`"
+                    },
+                    {
+                      "name": "iqr_outlier",
+                      "expression": "`iqr_outlier`"
+                    },
+                    {
+                      "name": "adverse_outlier",
+                      "expression": "`adverse_outlier`"
+                    },
+                    {
+                      "name": "outlier_status",
+                      "expression": "`outlier_status`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Z-score and IQR Agent-Week Diagnostics",
+                "showTitle": true
+              },
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "agent_label"
+                  },
+                  {
+                    "fieldName": "service_program"
+                  },
+                  {
+                    "fieldName": "cohort_name"
+                  },
+                  {
+                    "fieldName": "kpi"
+                  },
+                  {
+                    "fieldName": "tenure_week"
+                  },
+                  {
+                    "fieldName": "agent_score"
+                  },
+                  {
+                    "fieldName": "total_volume"
+                  },
+                  {
+                    "fieldName": "z_score"
+                  },
+                  {
+                    "fieldName": "directional_z_score"
+                  },
+                  {
+                    "fieldName": "iqr_lower_bound"
+                  },
+                  {
+                    "fieldName": "iqr_upper_bound"
+                  },
+                  {
+                    "fieldName": "z_score_outlier"
+                  },
+                  {
+                    "fieldName": "iqr_outlier"
+                  },
+                  {
+                    "fieldName": "adverse_outlier"
+                  },
+                  {
+                    "fieldName": "outlier_status"
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 13,
+            "width": 8,
+            "height": 8
+          }
+        }
+      ]
+    },
+    {
+      "name": "cohorts",
+      "displayName": "Cohort Comparison",
+      "layout": [
+        {
+          "widget": {
+            "name": "filter_program",
+            "queries": [
+              {
+                "name": "filter_program_scorecard",
+                "query": {
+                  "datasetName": "scorecard",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "service_program_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Service program",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Service program",
+                    "fieldName": "service_program",
+                    "queryName": "filter_program_scorecard"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_cohort",
+            "queries": [
+              {
+                "name": "filter_cohort_scorecard",
+                "query": {
+                  "datasetName": "scorecard",
+                  "fields": [
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "cohort_name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Cohort",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Cohort",
+                    "fieldName": "cohort_name",
+                    "queryName": "filter_cohort_scorecard"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_kpi",
+            "queries": [
+              {
+                "name": "filter_kpi_scorecard",
+                "query": {
+                  "datasetName": "scorecard",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "kpi_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "KPI",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "KPI",
+                    "fieldName": "kpi",
+                    "queryName": "filter_kpi_scorecard"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "cohort_agents",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "scorecard",
+                  "fields": [
+                    {
+                      "name": "agents",
+                      "expression": "SUM(`agent_count`) / NULLIF(COUNT(DISTINCT `kpi`), 0)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Agents Represented",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "agents"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "cohort_attainment",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "scorecard",
+                  "fields": [
+                    {
+                      "name": "attainment",
+                      "expression": "AVG(`static_target_attainment_rate`) * 100.0"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Average Target Attainment (%)",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "attainment"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "cohort_rank",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "scorecard",
+                  "fields": [
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "attainment",
+                      "expression": "AVG(`static_target_attainment_rate`) * 100.0"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Cohort Target Attainment (%)",
+                "showTitle": true
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "attainment",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "cohort_name",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 4,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "cohort_detail",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "scorecard",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "agent_count",
+                      "expression": "`agent_count`"
+                    },
+                    {
+                      "name": "weighted_score",
+                      "expression": "`weighted_score`"
+                    },
+                    {
+                      "name": "static_target_attainment_rate",
+                      "expression": "`static_target_attainment_rate`"
+                    },
+                    {
+                      "name": "days_to_target",
+                      "expression": "`days_to_target`"
+                    },
+                    {
+                      "name": "best_model_r_squared",
+                      "expression": "`best_model_r_squared`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Cohort Readiness Scorecard",
+                "showTitle": true
+              },
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "service_program"
+                  },
+                  {
+                    "fieldName": "cohort_name"
+                  },
+                  {
+                    "fieldName": "kpi"
+                  },
+                  {
+                    "fieldName": "agent_count"
+                  },
+                  {
+                    "fieldName": "weighted_score"
+                  },
+                  {
+                    "fieldName": "static_target_attainment_rate"
+                  },
+                  {
+                    "fieldName": "days_to_target"
+                  },
+                  {
+                    "fieldName": "best_model_r_squared"
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 2,
+            "width": 4,
+            "height": 10
+          }
+        }
+      ]
+    },
+    {
+      "name": "forecast",
+      "displayName": "Forecast",
+      "layout": [
+        {
+          "widget": {
+            "name": "filter_program",
+            "queries": [
+              {
+                "name": "filter_program_forecast",
+                "query": {
+                  "datasetName": "forecast",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "service_program_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_program_forecast_series",
+                "query": {
+                  "datasetName": "forecast_series",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "service_program_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Service program",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Service program",
+                    "fieldName": "service_program",
+                    "queryName": "filter_program_forecast"
+                  },
+                  {
+                    "displayName": "Service program",
+                    "fieldName": "service_program",
+                    "queryName": "filter_program_forecast_series"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_kpi",
+            "queries": [
+              {
+                "name": "filter_kpi_forecast",
+                "query": {
+                  "datasetName": "forecast",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "kpi_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_kpi_forecast_series",
+                "query": {
+                  "datasetName": "forecast_series",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "kpi_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "KPI",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "KPI",
+                    "fieldName": "kpi",
+                    "queryName": "filter_kpi_forecast"
+                  },
+                  {
+                    "displayName": "KPI",
+                    "fieldName": "kpi",
+                    "queryName": "filter_kpi_forecast_series"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_period",
+            "queries": [
+              {
+                "name": "filter_period_forecast",
+                "query": {
+                  "datasetName": "forecast",
+                  "fields": [
+                    {
+                      "name": "period",
+                      "expression": "`period`"
+                    },
+                    {
+                      "name": "period_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_period_forecast_series",
+                "query": {
+                  "datasetName": "forecast_series",
+                  "fields": [
+                    {
+                      "name": "period",
+                      "expression": "`period`"
+                    },
+                    {
+                      "name": "period_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Date",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Date",
+                    "fieldName": "period",
+                    "queryName": "filter_period_forecast"
+                  },
+                  {
+                    "displayName": "Date",
+                    "fieldName": "period",
+                    "queryName": "filter_period_forecast_series"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "forecast_trend",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "forecast_series",
+                  "fields": [
+                    {
+                      "name": "series_name",
+                      "expression": "`series_name`"
+                    },
+                    {
+                      "name": "period",
+                      "expression": "`period`"
+                    },
+                    {
+                      "name": "series_value",
+                      "expression": "AVG(`series_value`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Prophet Forecast with 80% Interval",
+                "showTitle": true
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "period",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "series_value",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "series_name",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 5,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "forecast_interval",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "forecast",
+                  "fields": [
+                    {
+                      "name": "period",
+                      "expression": "`period`"
+                    },
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "forecast_value",
+                      "expression": "`forecast_value`"
+                    },
+                    {
+                      "name": "forecast_lower",
+                      "expression": "`forecast_lower`"
+                    },
+                    {
+                      "name": "forecast_upper",
+                      "expression": "`forecast_upper`"
+                    },
+                    {
+                      "name": "is_actual",
+                      "expression": "`is_actual`"
+                    },
+                    {
+                      "name": "model_type",
+                      "expression": "`model_type`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "80% Forecast Interval",
+                "showTitle": true
+              },
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "period"
+                  },
+                  {
+                    "fieldName": "service_program"
+                  },
+                  {
+                    "fieldName": "kpi"
+                  },
+                  {
+                    "fieldName": "forecast_value"
+                  },
+                  {
+                    "fieldName": "forecast_lower"
+                  },
+                  {
+                    "fieldName": "forecast_upper"
+                  },
+                  {
+                    "fieldName": "is_actual"
+                  },
+                  {
+                    "fieldName": "model_type"
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 5,
+            "y": 2,
+            "width": 3,
+            "height": 7
+          }
+        }
+      ]
+    },
+    {
+      "name": "agents",
+      "displayName": "Agent Detail",
+      "layout": [
+        {
+          "widget": {
+            "name": "filter_program",
+            "queries": [
+              {
+                "name": "filter_program_ramp",
+                "query": {
+                  "datasetName": "ramp",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "service_program_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_program_agent_series",
+                "query": {
+                  "datasetName": "agent_series",
+                  "fields": [
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "service_program_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Service program",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Service program",
+                    "fieldName": "service_program",
+                    "queryName": "filter_program_ramp"
+                  },
+                  {
+                    "displayName": "Service program",
+                    "fieldName": "service_program",
+                    "queryName": "filter_program_agent_series"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_cohort",
+            "queries": [
+              {
+                "name": "filter_cohort_ramp",
+                "query": {
+                  "datasetName": "ramp",
+                  "fields": [
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "cohort_name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_cohort_agent_series",
+                "query": {
+                  "datasetName": "agent_series",
+                  "fields": [
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "cohort_name_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Cohort",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Cohort",
+                    "fieldName": "cohort_name",
+                    "queryName": "filter_cohort_ramp"
+                  },
+                  {
+                    "displayName": "Cohort",
+                    "fieldName": "cohort_name",
+                    "queryName": "filter_cohort_agent_series"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_kpi",
+            "queries": [
+              {
+                "name": "filter_kpi_ramp",
+                "query": {
+                  "datasetName": "ramp",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "kpi_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_kpi_agent_series",
+                "query": {
+                  "datasetName": "agent_series",
+                  "fields": [
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "kpi_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "KPI",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "KPI",
+                    "fieldName": "kpi",
+                    "queryName": "filter_kpi_ramp"
+                  },
+                  {
+                    "displayName": "KPI",
+                    "fieldName": "kpi",
+                    "queryName": "filter_kpi_agent_series"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_agent",
+            "queries": [
+              {
+                "name": "filter_agent_ramp",
+                "query": {
+                  "datasetName": "ramp",
+                  "fields": [
+                    {
+                      "name": "agent_label",
+                      "expression": "`agent_label`"
+                    },
+                    {
+                      "name": "agent_label_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_agent_agent_series",
+                "query": {
+                  "datasetName": "agent_series",
+                  "fields": [
+                    {
+                      "name": "agent_label",
+                      "expression": "`agent_label`"
+                    },
+                    {
+                      "name": "agent_label_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Agent",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Agent",
+                    "fieldName": "agent_label",
+                    "queryName": "filter_agent_ramp"
+                  },
+                  {
+                    "displayName": "Agent",
+                    "fieldName": "agent_label",
+                    "queryName": "filter_agent_agent_series"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_channel",
+            "queries": [
+              {
+                "name": "filter_channel_ramp",
+                "query": {
+                  "datasetName": "ramp",
+                  "fields": [
+                    {
+                      "name": "channel",
+                      "expression": "`channel`"
+                    },
+                    {
+                      "name": "channel_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_channel_agent_series",
+                "query": {
+                  "datasetName": "agent_series",
+                  "fields": [
+                    {
+                      "name": "channel",
+                      "expression": "`channel`"
+                    },
+                    {
+                      "name": "channel_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Channel",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Channel",
+                    "fieldName": "channel",
+                    "queryName": "filter_channel_ramp"
+                  },
+                  {
+                    "displayName": "Channel",
+                    "fieldName": "channel",
+                    "queryName": "filter_channel_agent_series"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_language",
+            "queries": [
+              {
+                "name": "filter_language_ramp",
+                "query": {
+                  "datasetName": "ramp",
+                  "fields": [
+                    {
+                      "name": "language",
+                      "expression": "`language`"
+                    },
+                    {
+                      "name": "language_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_language_agent_series",
+                "query": {
+                  "datasetName": "agent_series",
+                  "fields": [
+                    {
+                      "name": "language",
+                      "expression": "`language`"
+                    },
+                    {
+                      "name": "language_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Language",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Language",
+                    "fieldName": "language",
+                    "queryName": "filter_language_ramp"
+                  },
+                  {
+                    "displayName": "Language",
+                    "fieldName": "language",
+                    "queryName": "filter_language_agent_series"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 2,
+            "y": 2,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_site",
+            "queries": [
+              {
+                "name": "filter_site_ramp",
+                "query": {
+                  "datasetName": "ramp",
+                  "fields": [
+                    {
+                      "name": "site",
+                      "expression": "`site`"
+                    },
+                    {
+                      "name": "site_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              },
+              {
+                "name": "filter_site_agent_series",
+                "query": {
+                  "datasetName": "agent_series",
+                  "fields": [
+                    {
+                      "name": "site",
+                      "expression": "`site`"
+                    },
+                    {
+                      "name": "site_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Site",
+                "showTitle": true,
+                "showDescription": false
+              },
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "displayName": "Site",
+                    "fieldName": "site",
+                    "queryName": "filter_site_ramp"
+                  },
+                  {
+                    "displayName": "Site",
+                    "fieldName": "site",
+                    "queryName": "filter_site_agent_series"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 2,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "agent_count",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ramp",
+                  "fields": [
+                    {
+                      "name": "agents",
+                      "expression": "COUNT(DISTINCT `agent_id`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Pseudonymous Agents",
+                "showTitle": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "agents"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 2,
+            "width": 2,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "agent_trajectory",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "agent_series",
+                  "fields": [
+                    {
+                      "name": "series_name",
+                      "expression": "`series_name`"
+                    },
+                    {
+                      "name": "tenure_day",
+                      "expression": "`tenure_day`"
+                    },
+                    {
+                      "name": "series_value",
+                      "expression": "AVG(`series_value`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Agent Score versus Static and Training Targets",
+                "showTitle": true
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "tenure_day",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "series_value",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "series_name",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 5,
+            "width": 5,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "agent_detail",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ramp",
+                  "fields": [
+                    {
+                      "name": "performance_date",
+                      "expression": "`performance_date`"
+                    },
+                    {
+                      "name": "agent_label",
+                      "expression": "`agent_label`"
+                    },
+                    {
+                      "name": "service_program",
+                      "expression": "`service_program`"
+                    },
+                    {
+                      "name": "cohort_name",
+                      "expression": "`cohort_name`"
+                    },
+                    {
+                      "name": "channel",
+                      "expression": "`channel`"
+                    },
+                    {
+                      "name": "language",
+                      "expression": "`language`"
+                    },
+                    {
+                      "name": "tenure_day",
+                      "expression": "`tenure_day`"
+                    },
+                    {
+                      "name": "kpi",
+                      "expression": "`kpi`"
+                    },
+                    {
+                      "name": "agent_score",
+                      "expression": "`agent_score`"
+                    },
+                    {
+                      "name": "volume",
+                      "expression": "`volume`"
+                    },
+                    {
+                      "name": "cumulative_volume",
+                      "expression": "`cumulative_volume`"
+                    },
+                    {
+                      "name": "volume_bin",
+                      "expression": "`volume_bin`"
+                    },
+                    {
+                      "name": "static_target",
+                      "expression": "`static_target`"
+                    },
+                    {
+                      "name": "training_target",
+                      "expression": "`training_target`"
+                    },
+                    {
+                      "name": "at_static_target",
+                      "expression": "`at_static_target`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "title": "Pseudonymous Agent Drill-through",
+                "showTitle": true
+              },
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "performance_date"
+                  },
+                  {
+                    "fieldName": "agent_label"
+                  },
+                  {
+                    "fieldName": "service_program"
+                  },
+                  {
+                    "fieldName": "cohort_name"
+                  },
+                  {
+                    "fieldName": "channel"
+                  },
+                  {
+                    "fieldName": "language"
+                  },
+                  {
+                    "fieldName": "tenure_day"
+                  },
+                  {
+                    "fieldName": "kpi"
+                  },
+                  {
+                    "fieldName": "agent_score"
+                  },
+                  {
+                    "fieldName": "volume"
+                  },
+                  {
+                    "fieldName": "cumulative_volume"
+                  },
+                  {
+                    "fieldName": "volume_bin"
+                  },
+                  {
+                    "fieldName": "static_target"
+                  },
+                  {
+                    "fieldName": "training_target"
+                  },
+                  {
+                    "fieldName": "at_static_target"
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 5,
+            "y": 5,
+            "width": 3,
+            "height": 8
+          }
+        }
+      ]
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}

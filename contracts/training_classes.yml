@@ -1,0 +1,14 @@
+name: training_classes
+grain: one row per cohort_id
+required_columns:
+  cohort_id: integer
+  cohort_name: string
+  service_program: string
+  class_id: string
+  class_start_date: date
+optional_columns:
+  cohort_abbreviation: string
+  class_sort: integer
+rules:
+  - cohort_id must be unique.
+  - cohort identifiers must reconcile with the agents and targets contracts.

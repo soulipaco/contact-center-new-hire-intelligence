@@ -1,0 +1,10 @@
+id: e202a6e4b2d94d2eb66be9f085d20205
+display_name: Service Program Text Match
+sql: service_program ILIKE '%value%'
+synonyms: [program, department, account]
+instruction: |
+  WHEN_TO_USE: Replace value with the requested service-program text.
+  SCOPE_TABLES: all three contact-center serving views.
+  TIMEFRAME_HINT: any.
+  RISK_IF_MISUSED: Include service_program in SELECT and use ILIKE rather than exact equality.
+

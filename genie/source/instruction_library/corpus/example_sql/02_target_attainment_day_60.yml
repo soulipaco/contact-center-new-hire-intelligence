@@ -1,0 +1,15 @@
+id: f301b7f5c3ea4e3fb77cfa0196e30102
+question: What percentage of new hires meet target by day 60?
+sql: |-
+  SELECT
+    kpi,
+    ROUND(100 * AVG(CASE WHEN at_static_target THEN 1.0 ELSE 0.0 END), 1) AS target_attainment_pct,
+    COUNT(DISTINCT agent_id) AS distinct_agents
+  FROM workspace.contact_center_gold.mv_new_hire_kpi_daily
+  WHERE tenure_day BETWEEN 55 AND 60
+  GROUP BY kpi
+  ORDER BY target_attainment_pct DESC
+usage_guidance: |
+  Use for milestone target-attainment questions near day 60.
+  MANDATORY OUTPUT CONTRACT: kpi, target_attainment_pct, distinct_agents.
+  MANDATORY ANTI-PATTERNS: Use at_static_target because it already handles KPI directionality.

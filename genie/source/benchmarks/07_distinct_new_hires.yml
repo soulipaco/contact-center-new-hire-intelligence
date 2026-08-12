@@ -1,0 +1,7 @@
+id: b401c806d4fb4f40a88d0b12a7f40107
+question: How many distinct pseudonymous new-hire agents are represented?
+answer_format: SQL
+sql: |-
+  SELECT COUNT(DISTINCT agent_id) AS distinct_new_hires
+  FROM workspace.contact_center_gold.mv_new_hire_kpi_daily
+expected_behavior: Return exactly one non-negative count using COUNT DISTINCT.

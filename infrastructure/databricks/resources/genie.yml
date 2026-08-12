@@ -1,0 +1,8 @@
+resources:
+  genie_spaces:
+    new_hire_ramp_genie:
+      title: Contact Center New-Hire Ramp Intelligence
+      description: Privacy-safe analysis of contact-center cohort ramp, targets, statistical benchmarks, model confidence, and forecasts.
+      warehouse_id: ${var.warehouse_id}
+      parent_path: ${workspace.root_path}/resources
+      file_path: ../../../genie/serialized/contact_center_new_hire.geniespace.json

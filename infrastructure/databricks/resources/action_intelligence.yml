@@ -1,0 +1,44 @@
+resources:
+  jobs:
+    action_intelligence_pipeline:
+      name: ${bundle.target} - Contact Center Action Intelligence
+      description: >-
+        Optional RAG operating layer: index the Git-reviewed playbook, run Genie
+        Deep Research, retrieve relevant guidance, and persist generated action plans.
+      schedule:
+        quartz_cron_expression: "0 0 9 ? * MON"
+        timezone_id: UTC
+        pause_status: PAUSED
+      max_concurrent_runs: 1
+      tasks:
+        - task_key: index_operating_playbook
+          notebook_task:
+            notebook_path: ../../../action_intelligence/notebooks/00_index_playbook.py
+            base_parameters: &action_parameters
+              genie_space_id: ${resources.genie_spaces.new_hire_ramp_genie.id}
+              vector_search_endpoint: ${var.vector_search_endpoint}
+              llm_endpoint: ${var.llm_endpoint}
+          environment_key: action_environment
+        - task_key: analyze_readiness_trends
+          depends_on: [{task_key: index_operating_playbook}]
+          notebook_task:
+            notebook_path: ../../../action_intelligence/notebooks/01_trends_analysis.py
+            base_parameters: *action_parameters
+          environment_key: action_environment
+        - task_key: generate_action_plans
+          depends_on: [{task_key: analyze_readiness_trends}]
+          notebook_task:
+            notebook_path: ../../../action_intelligence/notebooks/02_generate_action_plans.py
+            base_parameters: *action_parameters
+          environment_key: action_environment
+      environments:
+        - environment_key: action_environment
+          spec:
+            environment_version: "2"
+            dependencies:
+              - databricks-sdk>=0.50
+              - databricks-vectorsearch>=0.55
+              - httpx>=0.27
+              - mlflow>=2.15
+              - pypdf>=5.0
+              - pyyaml>=6.0

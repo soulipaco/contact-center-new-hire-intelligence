@@ -1,0 +1,9 @@
+id: b401c806d4fb4f40a88d0b12a7f40106
+question: What is the future QA Score forecast by service program?
+answer_format: SQL
+sql: |-
+  SELECT period, service_program, forecast_value, forecast_lower, forecast_upper
+  FROM workspace.contact_center_gold.mv_kpi_forecast
+  WHERE is_actual = false AND kpi ILIKE '%QA Score%'
+  ORDER BY service_program, period
+expected_behavior: Return future-only rows with uncertainty bounds.

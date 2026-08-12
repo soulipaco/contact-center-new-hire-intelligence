@@ -1,0 +1,21 @@
+id: f301b7f5c3ea4e3fb77cfa0196e30105
+question: What is the six-month KPI forecast by service program?
+sql: |-
+  SELECT
+    period,
+    service_program,
+    kpi,
+    ROUND(forecast_value, 4) AS forecast_value,
+    ROUND(forecast_lower, 4) AS forecast_lower,
+    ROUND(forecast_upper, 4) AS forecast_upper
+  FROM workspace.contact_center_gold.mv_kpi_forecast
+  WHERE is_actual = false
+    AND kpi ILIKE :KpiPattern
+  ORDER BY service_program, period
+parameters:
+  - name: KpiPattern
+    type_hint: STRING
+usage_guidance: |
+  Use for future KPI outlook questions.
+  MANDATORY OUTPUT CONTRACT: period, service_program, kpi, forecast_value, forecast_lower, forecast_upper.
+  MANDATORY ANTI-PATTERNS: Do not describe is_actual = true rows as predictions.

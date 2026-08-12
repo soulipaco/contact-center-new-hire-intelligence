@@ -1,0 +1,9 @@
+id: d101f5d3a1c84c1da55ad8ef74c10101
+alias: weighted_kpi_score
+display_name: Weighted KPI Score
+sql: SUM(nominator) / NULLIF(SUM(denominator), 0)
+synonyms: [average score, KPI score, weighted score]
+instruction: |
+  WHEN_TO_USE: Use for KPI score aggregation from mv_new_hire_kpi_daily.
+  SCOPE_TABLES: workspace.contact_center_gold.mv_new_hire_kpi_daily.
+  RISK_IF_MISUSED: Never use AVG(agent_score), because low-volume rows would receive too much weight.

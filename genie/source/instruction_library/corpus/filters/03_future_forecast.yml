@@ -1,0 +1,9 @@
+id: e202a6e4b2d94d2eb66be9f085d20203
+display_name: Future Forecast Only
+sql: is_actual = false
+synonyms: [future, projected, forecast]
+instruction: |
+  WHEN_TO_USE: Apply when the user asks only for future projections.
+  SCOPE_TABLES: workspace.contact_center_gold.mv_kpi_forecast.
+  TIMEFRAME_HINT: Six months after the latest actual period.
+  RISK_IF_MISUSED: Historical rows are actual observations and should not be described as forecasts.

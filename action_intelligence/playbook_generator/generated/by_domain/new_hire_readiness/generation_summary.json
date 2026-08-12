@@ -1,0 +1,9 @@
+{
+  "kit_root": ".",
+  "room_name": "contact_center_new_hire_ramp",
+  "domain": "New-Hire Readiness",
+  "question_category": "new_hire_readiness",
+  "playbook_path": "action_intelligence/playbook_generator/generated/by_domain/new_hire_readiness/new_hire_readiness_action_playbook.md",
+  "chunks_path": "action_intelligence/playbook_generator/generated/by_domain/new_hire_readiness/new_hire_readiness_action_playbook_chunks.json",
+  "chunk_count": 8
+}

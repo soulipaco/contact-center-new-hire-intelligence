@@ -1,0 +1,10 @@
+id: b401c806d4fb4f40a88d0b12a7f40104
+question: Which service program has the best new-hire AHT?
+answer_format: SQL
+sql: |-
+  SELECT service_program, SUM(nominator) / NULLIF(SUM(denominator), 0) AS weighted_aht
+  FROM workspace.contact_center_gold.mv_new_hire_kpi_daily
+  WHERE kpi ILIKE '%AHT%'
+  GROUP BY service_program
+  ORDER BY weighted_aht ASC
+expected_behavior: Rank lower AHT as better and include service_program in the output.

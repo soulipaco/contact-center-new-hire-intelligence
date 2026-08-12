@@ -1,0 +1,18 @@
+{
+  "kit_root": ".",
+  "kit_format": "genie_kit",
+  "room_name": "contact_center_new_hire_ramp",
+  "playbook_title": "Contact Center New-Hire Readiness Action Playbook",
+  "playbook_path": "action_intelligence/playbook_generator/generated/contact_center_new_hire_ramp_action_playbook.md",
+  "chunks_path": "action_intelligence/playbook_generator/generated/contact_center_new_hire_ramp_action_playbook_chunks.json",
+  "pdf_output_dir": "action_intelligence/playbook_generator/generated/pdfs",
+  "pdf_paths": [
+    "action_intelligence/playbook_generator/generated/pdfs/contact_center_new_hire_ramp_new_hire_readiness_action_playbook.pdf"
+  ],
+  "domain_count": 1,
+  "chunk_count": 9,
+  "question_categories": [
+    "cross_source_playbook",
+    "new_hire_readiness"
+  ]
+}

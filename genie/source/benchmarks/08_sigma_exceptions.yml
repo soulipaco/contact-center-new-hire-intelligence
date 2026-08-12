@@ -1,0 +1,10 @@
+id: b401c806d4fb4f40a88d0b12a7f40108
+question: Which cohorts are on the adverse side of the direction-aware one-sigma boundary in the latest complete month?
+answer_format: SQL
+sql: |-
+  SELECT service_program, cohort_name, kpi, period, cohort_score, target_1_sigma, normal
+  FROM workspace.contact_center_gold.mv_sigma_band_comparison
+  WHERE period = (SELECT MAX(period) FROM workspace.contact_center_gold.mv_sigma_band_comparison)
+    AND below_1_sigma
+  ORDER BY service_program, cohort_name, kpi
+expected_behavior: Use the governed direction-aware exception flag and return the benchmark boundary.

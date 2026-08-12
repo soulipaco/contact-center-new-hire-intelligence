@@ -1,0 +1,11 @@
+max_total_space_instructions: 100
+general_text_instruction_count: 1
+table_description_count_mode: auto_from_data_sources_tables
+active_budgets:
+  example_sql:
+    mode: derived_total_minus_general_minus_tables
+  filters:
+    max_active: 100
+  measures:
+    max_active: 100
+

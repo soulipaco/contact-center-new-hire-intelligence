@@ -1,0 +1,9 @@
+id: d101f5d3a1c84c1da55ad8ef74c10104
+alias: average_days_to_target
+display_name: Average Days to Target
+sql: AVG(days_to_target)
+synonyms: [ramp speed, time to proficiency, days to proficiency]
+instruction: |
+  WHEN_TO_USE: Use on best learning-curve rows for cohort ramp-speed summaries.
+  SCOPE_TABLES: workspace.contact_center_gold.mv_learning_curve_best.
+  RISK_IF_MISUSED: Filter is_best_model = true or all four candidate models will be averaged together.

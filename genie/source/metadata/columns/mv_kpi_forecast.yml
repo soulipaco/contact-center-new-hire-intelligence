@@ -1,0 +1,26 @@
+table: "workspace.contact_center_gold.mv_kpi_forecast"
+columns:
+  - column_name: period
+    enable_format_assistance: true
+  - column_name: service_program
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: kpi
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: normal
+    exclude: false
+  - column_name: forecast_value
+    enable_format_assistance: true
+  - column_name: forecast_lower
+    enable_format_assistance: true
+  - column_name: forecast_upper
+    enable_format_assistance: true
+  - column_name: is_actual
+    enable_entity_matching: true
+  - column_name: model_run_date
+    enable_format_assistance: true
+  - column_name: model_type
+    enable_entity_matching: true
+  - column_name: interval_width
+    enable_format_assistance: true

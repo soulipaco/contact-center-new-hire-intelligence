@@ -1,0 +1,47 @@
+bundle:
+  name: contact-center-new-hire-intelligence
+  engine: direct
+
+include:
+  - infrastructure/databricks/resources/*.yml
+
+variables:
+  warehouse_id:
+    description: Serverless or Pro SQL warehouse used by the AI/BI dashboard
+  vector_search_endpoint:
+    description: Existing Vector Search endpoint for the optional action-intelligence pipeline
+    default: CONFIGURE_BEFORE_RUNNING
+  llm_endpoint:
+    description: Databricks Model Serving endpoint used to generate action plans
+    default: databricks-meta-llama-3-3-70b-instruct
+sync:
+  include:
+    - lakehouse/**
+    - action_intelligence/**
+    - config/**
+    - contracts/**
+  exclude:
+    - dashboard/*.lvdash.json
+    - genie/serialized/*.geniespace.json
+
+targets:
+  dev:
+    default: true
+    mode: development
+    workspace:
+      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+  prod:
+    mode: production
+    workspace:
+      root_path: /Workspace/Shared/.bundle/${bundle.name}/${bundle.target}
+    resources:
+      jobs:
+        daily_lakehouse_refresh:
+          schedule:
+            pause_status: UNPAUSED
+        weekly_learning_curve_training:
+          schedule:
+            pause_status: UNPAUSED
+        monthly_prophet_forecast:
+          schedule:
+            pause_status: UNPAUSED

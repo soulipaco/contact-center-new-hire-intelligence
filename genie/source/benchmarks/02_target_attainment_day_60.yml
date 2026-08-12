@@ -1,0 +1,9 @@
+id: b401c806d4fb4f40a88d0b12a7f40102
+question: What percentage of new hires meet static target by day 60?
+answer_format: SQL
+sql: |-
+  SELECT kpi, 100 * AVG(CASE WHEN at_static_target THEN 1.0 ELSE 0.0 END) AS target_attainment_pct
+  FROM workspace.contact_center_gold.mv_new_hire_kpi_daily
+  WHERE tenure_day BETWEEN 55 AND 60
+  GROUP BY kpi
+expected_behavior: Use the direction-aware at_static_target flag and return one percentage per KPI.

@@ -1,0 +1,15 @@
+name: observations
+grain: one row per performance_date, agent_id, and kpi
+required_columns:
+  performance_date: date
+  agent_id: integer
+  kpi: string
+  numerator: number
+  denominator: positive_number
+  volume: non_negative_integer
+rules:
+  - performance_date must not be in the future unless explicitly backtesting.
+  - denominator must be greater than zero.
+  - the natural key performance_date + agent_id + kpi must be unique.
+  - numerator divided by denominator must represent the KPI score.
+  - agent_id must be integer-compatible in the current release.

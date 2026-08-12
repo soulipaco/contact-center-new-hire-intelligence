@@ -1,0 +1,33 @@
+table: "workspace.contact_center_gold.mv_cohort_scorecard"
+columns:
+  # -- Dimensions --
+  - column_name: service_program
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: cohort_id
+    enable_entity_matching: true
+  - column_name: cohort_name
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: kpi
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: normal
+    exclude: false
+  # -- Measures --
+  - column_name: agent_count
+    exclude: false
+  - column_name: weighted_score
+    enable_format_assistance: true
+  - column_name: static_target_attainment_rate
+    enable_format_assistance: true
+  - column_name: training_target_attainment_rate
+    enable_format_assistance: true
+  - column_name: best_model_type
+    enable_entity_matching: true
+  - column_name: best_model_r_squared
+    enable_format_assistance: true
+  - column_name: days_to_target
+    exclude: false
+  - column_name: learning_curve_interpretation
+    exclude: false

@@ -1,0 +1,46 @@
+table: "workspace.contact_center_gold.mv_learning_curve_best"
+columns:
+  - column_name: service_program
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: cohort_id
+    enable_entity_matching: true
+  - column_name: cohort_name
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: kpi
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: normal
+    exclude: false
+  - column_name: model_type
+    enable_entity_matching: true
+    build_value_dictionary: true
+  - column_name: alpha
+    exclude: false
+  - column_name: beta
+    exclude: false
+  - column_name: r_squared
+    enable_format_assistance: true
+  - column_name: predicted_day_30
+    enable_format_assistance: true
+  - column_name: predicted_day_60
+    enable_format_assistance: true
+  - column_name: predicted_day_90
+    enable_format_assistance: true
+  - column_name: days_to_target
+    exclude: false
+  - column_name: static_target
+    enable_format_assistance: true
+  - column_name: is_best_model
+    enable_entity_matching: true
+  - column_name: interpretation
+    exclude: false
+  - column_name: run_date
+    enable_format_assistance: true
+  - column_name: mlflow_run_id
+    exclude: false
+  - column_name: registered_model_name
+    exclude: false
+  - column_name: registered_model_version
+    exclude: false

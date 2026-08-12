@@ -1,0 +1,21 @@
+id: f301b7f5c3ea4e3fb77cfa0196e30103
+question: Which cohorts reach KPI target fastest?
+sql: |-
+  SELECT
+    service_program,
+    cohort_name,
+    kpi,
+    model_type,
+    ROUND(r_squared, 3) AS r_squared,
+    days_to_target,
+    interpretation
+  FROM workspace.contact_center_gold.mv_learning_curve_best
+  WHERE kpi ILIKE :KpiPattern
+  ORDER BY days_to_target ASC NULLS LAST, r_squared DESC
+parameters:
+  - name: KpiPattern
+    type_hint: STRING
+usage_guidance: |
+  Use for fastest-ramp, time-to-proficiency, or cohort ranking questions.
+  MANDATORY OUTPUT CONTRACT: service_program, cohort_name, kpi, model_type, r_squared, days_to_target, interpretation.
+  MANDATORY ANTI-PATTERNS: Do not rank NULL days_to_target ahead of cohorts that reach target.
